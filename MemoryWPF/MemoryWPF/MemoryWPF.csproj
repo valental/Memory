@@ -62,11 +62,11 @@
       <DependentUpon>Card.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\InvertBoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\ThemeAndIdToImageConverter.cs" />
     <Compile Include="Converters\ThemeAndIdToNameConverter.cs" />
     <Compile Include="Converters\ThemeToColorConverter.cs" />
     <Compile Include="Converters\ThemeToStringConverter.cs" />
     <Compile Include="DataHelpers\CardData.cs" />
-    <Compile Include="DataHelpers\Theme.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
@@ -113,9 +113,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Resources\animals_lion.png" />
+    <Folder Include="Resources\Math\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Animals\animals_lion.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="brain_icon.ico" />

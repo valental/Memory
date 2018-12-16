@@ -10,5 +10,6 @@
         <converters:ThemeToStringConverter x:Key="ThemeToStringConverter"/>
         <converters:ThemeToColorConverter x:Key="ThemeToColorConverter"/>
         <converters:ThemeAndIdToNameConverter x:Key="ThemeAndIdToNameConverter"/>
+        <converters:ThemeAndIdToImageConverter x:Key="ThemeAndIdToImageConverter"/>
     </Application.Resources>
 </Application>

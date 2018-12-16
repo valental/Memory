@@ -1,40 +1,67 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows.Media;
 
 namespace MemoryWPF.DataHelpers
 {
+    public enum Theme
+    {
+        Animals,
+        Math,
+        // Add new themes here
+    }
+
     public static class CardData
     {
         public static Dictionary<Theme, SolidColorBrush> ThemeColors = new Dictionary<Theme, SolidColorBrush>();
-        public static Dictionary<Theme, List<string>> ThemeCardImages = new Dictionary<Theme, List<string>>();
         public static Dictionary<Theme, List<string>> ThemeCardNames = new Dictionary<Theme, List<string>>();
+        public static Dictionary<Theme, List<string>> ThemeCardImages = new Dictionary<Theme, List<string>>();
 
         static CardData()
         {
-            #region Animals
-            string path = "../Resources/";
+            const string path = "Resources/";
+            string theme;
+
+            #region Colors
             ThemeColors[Theme.Animals] = Brushes.Red;
-            ThemeCardImages[Theme.Animals] = new List<string>();
-            ThemeCardImages[Theme.Animals].Add(path + "animals_lion.png");
-            // TODO add more here
+            ThemeColors[Theme.Math] = Brushes.DarkBlue;
 
-            ThemeCardNames[Theme.Animals] = new List<string>();
-            ThemeCardNames[Theme.Animals].Add("Lion");
-            // TODO add more here
+            // Add colors for new themes here 
+            #endregion
 
+            #region Animals
+            theme = "Animals/";
+            ThemeCardNames[Theme.Animals] = new List<string>()
+            {
+                "Lion",
+                
+                // Add new animals here and don't forget the ','
+            };
+            
+            ThemeCardImages[Theme.Animals] = new List<string>()
+            {
+                path + theme + "animals_lion.png",
+
+                // Add new animal images here and don't forget the ','
+            };
             #endregion
 
             #region Math
-            ThemeColors[Theme.Math] = Brushes.DarkBlue;
-            ThemeCardImages[Theme.Math] = new List<string>();
-            // TODO add more here
+            theme = "Math/";
+            ThemeCardNames[Theme.Math] = new List<string>()
+            {
+                "Sinus",
+                
+                // Add new animals here and don't forget the ','
+            };
+            
+            ThemeCardImages[Theme.Math] = new List<string>()
+            {
+                path + "math_sinus.png", // this picture still has to be created and added to Resources/Math
 
-            ThemeCardNames[Theme.Math] = new List<string>();
-            ThemeCardNames[Theme.Math].Add("Sinus");
-            // TODO add more here
-
+                // Add new animal images here and don't forget the ','
+            };
             #endregion
-
         }
     }
 }
