@@ -1,15 +1,15 @@
-﻿using MemoryWPF.DataHelpers;
-using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+
+using MemoryWPF.DataHelpers;
 
 namespace MemoryWPF.Controls
 {
     /// <summary>
     /// Interaction logic for Card.xaml
     /// </summary>
-    public partial class Card : UserControl
+    public partial class Card : Button
     {
         #region Dependecy Properties
         public static readonly DependencyProperty ThemeProperty = DependencyProperty.Register(
@@ -50,14 +50,14 @@ namespace MemoryWPF.Controls
         #endregion
 
         #region Commands
-        private RelayCommand clickCommand;
-        public ICommand ClickCommand
+        private RelayCommand flipCommand;
+        public ICommand FlipCommand
         {
             get
             {
-                if (clickCommand == null)
-                    clickCommand = new RelayCommand(Click);
-                return clickCommand;
+                if (flipCommand == null)
+                    flipCommand = new RelayCommand(Flip);
+                return flipCommand;
             }
         }
         #endregion
@@ -70,7 +70,7 @@ namespace MemoryWPF.Controls
         #endregion
 
         #region Methods
-        private void Click()
+        private void Flip()
         {
             if (!IsMatched)
                 IsOpen = !IsOpen;

@@ -6,8 +6,9 @@
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
-        <converters:InvertBoolToVisibilityConverter x:Key="InvertBoolToVis"/>
+        <converters:InvertBoolToVisibilityConverter x:Key="InvertBoolToVisConverter"/>
         <converters:ThemeToStringConverter x:Key="ThemeToStringConverter"/>
         <converters:ThemeToColorConverter x:Key="ThemeToColorConverter"/>
+        <converters:ThemeAndIdToNameConverter x:Key="ThemeAndIdToNameConverter"/>
     </Application.Resources>
 </Application>

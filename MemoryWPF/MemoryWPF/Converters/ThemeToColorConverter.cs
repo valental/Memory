@@ -1,25 +1,18 @@
-﻿using MemoryWPF.DataHelpers;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Windows.Data;
-using System.Windows.Media;
+
+using MemoryWPF.DataHelpers;
 
 namespace MemoryWPF.Converters
 {
     class ThemeToColorConverter : IValueConverter
     {
+        public object Bruses { get; private set; }
+
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Theme theme = (Theme)value;
-            switch(theme)
-            { 
-                case Theme.Animals:
-                    return Brushes.Red;
-                case Theme.Math:
-                    return Brushes.Blue;
-                default: 
-                    return Brushes.Red;
-           }
+            return CardData.ThemeColors[(Theme)value];
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
