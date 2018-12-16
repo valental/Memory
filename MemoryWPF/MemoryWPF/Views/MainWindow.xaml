@@ -39,5 +39,6 @@
             <controls:Card Theme="Math" ID="0" Grid.Row="2" Grid.Column="6"/>
             <controls:Card Theme="Math" ID="0" Grid.Row="2" Grid.Column="8"/>
         </Grid>
+        <!--<controls:CardDeck Theme="Animals" PairCount="12"/>-->
     </ScrollViewer>
 </Window>
