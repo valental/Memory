@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows.Media;
 
 namespace MemoryWPF.DataHelpers
@@ -57,7 +56,7 @@ namespace MemoryWPF.DataHelpers
             
             ThemeCardImages[Theme.Math] = new List<string>()
             {
-                path + "math_sinus.png", // this picture still has to be created and added to Resources/Math
+                path + theme + "math_sinus.png", // this picture still has to be created and added to Resources/Math
 
                 // Add new animal images here and don't forget the ','
             };
