@@ -10,11 +10,7 @@ namespace MemoryWPF.DataHelpers
         // Add new themes here
     }
 
-    public enum Language
-    {
-        English,
-        Croatian
-    }
+    public enum Language { English, Croatian }
 
     public static class CardData
     {

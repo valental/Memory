@@ -15,15 +15,19 @@ namespace MemoryWPF.Controls
         public static readonly DependencyProperty ThemeProperty = DependencyProperty.Register(
             "Theme", typeof(Theme), typeof(CardDeck), new PropertyMetadata(Theme.Animals)
         );
+
+        public static readonly DependencyProperty PairCountProperty = DependencyProperty.Register(
+            "PairCount", typeof(int), typeof(CardDeck), new PropertyMetadata(11)
+        );
+        #endregion
+
+        #region Public Properties
         public Theme Theme
         {
             get { return (Theme)GetValue(ThemeProperty); }
             set { SetValue(ThemeProperty, value); }
         }
 
-        public static readonly DependencyProperty PairCountProperty = DependencyProperty.Register(
-            "PairCount", typeof(int), typeof(CardDeck), new PropertyMetadata(2)
-        );
         public int PairCount
         {
             get { return (int)GetValue(PairCountProperty); }
@@ -52,7 +56,7 @@ namespace MemoryWPF.Controls
 
             for (int i = 0; i < cardRows; i++)
             {
-                for (int j = 0; (i < cardCols) && (i * pairsInRow + j < PairCount); j++)
+                for (int j = 0; (j < cardCols) && (2 * i * pairsInRow + j < 2 * PairCount); j++)
                 {
                     Card card = new Card();
                     card.Theme = Theme.Animals;

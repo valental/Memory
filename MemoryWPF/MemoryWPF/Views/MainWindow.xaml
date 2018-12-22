@@ -8,12 +8,13 @@
         xmlns:controls="clr-namespace:MemoryWPF.Controls"
         mc:Ignorable="d"
         Title="Memory" 
+        WindowStartupLocation="CenterScreen"
         SizeToContent="WidthAndHeight">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-        <Grid>
+        <!--<Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="20"/>
@@ -38,7 +39,7 @@
             <controls:Card Theme="Animals" ID="0" Grid.Row="2" Grid.Column="4"/>
             <controls:Card Theme="Math" ID="0" Grid.Row="2" Grid.Column="6"/>
             <controls:Card Theme="Math" ID="0" Grid.Row="2" Grid.Column="8"/>
-        </Grid>
-        <!--<controls:CardDeck Theme="Animals" PairCount="12"/>-->
+        </Grid>-->
+        <controls:CardDeck Theme="Animals" PairCount="3"/>
     </ScrollViewer>
 </Window>
