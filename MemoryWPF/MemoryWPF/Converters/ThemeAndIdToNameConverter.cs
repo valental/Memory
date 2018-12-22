@@ -21,7 +21,8 @@ namespace MemoryWPF.Converters
             {
                 id = (int)values[1];
             }
-            return CardData.ThemeCardNames[theme][id];
+            Enum.TryParse(Properties.Settings.Default.Language, out Language language);
+            return language == Language.English ? CardData.ThemeCardNamesEnglish[theme][id] : CardData.ThemeCardNamesCroatian[theme][id];
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

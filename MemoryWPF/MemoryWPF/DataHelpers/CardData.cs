@@ -10,10 +10,17 @@ namespace MemoryWPF.DataHelpers
         // Add new themes here
     }
 
+    public enum Language
+    {
+        English,
+        Croatian
+    }
+
     public static class CardData
     {
         public static Dictionary<Theme, SolidColorBrush> ThemeColors = new Dictionary<Theme, SolidColorBrush>();
-        public static Dictionary<Theme, List<string>> ThemeCardNames = new Dictionary<Theme, List<string>>();
+        public static Dictionary<Theme, List<string>> ThemeCardNamesEnglish = new Dictionary<Theme, List<string>>();
+        public static Dictionary<Theme, List<string>> ThemeCardNamesCroatian = new Dictionary<Theme, List<string>>();
         public static Dictionary<Theme, List<string>> ThemeCardImages = new Dictionary<Theme, List<string>>();
 
         static CardData()
@@ -30,13 +37,20 @@ namespace MemoryWPF.DataHelpers
 
             #region Animals
             theme = "Animals/";
-            ThemeCardNames[Theme.Animals] = new List<string>()
+            ThemeCardNamesEnglish[Theme.Animals] = new List<string>()
             {
                 "Lion",
                 
                 // Add new animals here and don't forget the ','
             };
-            
+
+            ThemeCardNamesCroatian[Theme.Animals] = new List<string>()
+            {
+                "Lav",
+                
+                // Add new animals here and don't forget the ','
+            };
+
             ThemeCardImages[Theme.Animals] = new List<string>()
             {
                 path + theme + "animals_lion.png",
@@ -47,13 +61,20 @@ namespace MemoryWPF.DataHelpers
 
             #region Math
             theme = "Math/";
-            ThemeCardNames[Theme.Math] = new List<string>()
+            ThemeCardNamesEnglish[Theme.Math] = new List<string>()
             {
                 "Sinus",
                 
                 // Add new animals here and don't forget the ','
             };
-            
+
+            ThemeCardNamesCroatian[Theme.Math] = new List<string>()
+            {
+                "Sinus",
+                
+                // Add new animals here and don't forget the ','
+            };
+
             ThemeCardImages[Theme.Math] = new List<string>()
             {
                 path + theme + "math_sinus.png", // this picture still has to be created and added to Resources/Math
