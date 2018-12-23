@@ -15,6 +15,7 @@ namespace MemoryWPF.Controls
         public static readonly DependencyProperty ThemeProperty = DependencyProperty.Register(
             "Theme", typeof(Theme), typeof(Card), new PropertyMetadata(Theme.Animals)
         );
+
         public static readonly DependencyProperty IDProperty = DependencyProperty.Register(
             "ID", typeof(int), typeof(Card), new PropertyMetadata(0)
         );
