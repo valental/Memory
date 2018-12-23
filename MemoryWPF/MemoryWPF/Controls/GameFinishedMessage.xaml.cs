@@ -12,7 +12,7 @@ namespace MemoryWPF.Controls
     {
         #region Dependency Properties
         public static readonly DependencyProperty ThemeProperty = DependencyProperty.Register(
-            "SelectedTheme", typeof(Theme), typeof(GameFinishedMessage), new PropertyMetadata(Theme.Animals)
+            "Theme", typeof(Theme), typeof(GameFinishedMessage), new PropertyMetadata(Theme.Animals)
         );
         #endregion
 

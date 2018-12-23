@@ -160,6 +160,7 @@ namespace MemoryWPF.Controls
                     if (pairsMatched == PairCount)
                     {
                         GameFinishedMessage gameFinishedMessage = new GameFinishedMessage();
+                        gameFinishedMessage.Theme = Theme;
                         Grid.SetRow(gameFinishedMessage, 0);
                         Grid.SetRowSpan(gameFinishedMessage, 2 * cardRows + 3);
                         Grid.SetColumn(gameFinishedMessage, 0);
