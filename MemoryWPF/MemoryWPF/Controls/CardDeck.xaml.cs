@@ -26,7 +26,7 @@ namespace MemoryWPF.Controls
         );
 
         public static readonly DependencyProperty PairCountProperty = DependencyProperty.Register(
-            "PairCount", typeof(int), typeof(CardDeck), new PropertyMetadata(11)
+            "PairCount", typeof(int), typeof(CardDeck), new PropertyMetadata(2)
         );
         #endregion
 
@@ -153,17 +153,12 @@ namespace MemoryWPF.Controls
                     pairsMatched++;
                     if (pairsMatched == PairCount)
                     {
-                        Border congratulationsBorder = new Border();
-                        TextBlock congratulationsTextBlock = new TextBlock();
-                        congratulationsTextBlock.Text = "Congratulations!";
-                        congratulationsBorder.Child = congratulationsTextBlock;
-                        congratulationsBorder.VerticalAlignment = VerticalAlignment.Center;
-                        congratulationsBorder.HorizontalAlignment = HorizontalAlignment.Center;
-                        Grid.SetRow(congratulationsBorder, 0);
-                        Grid.SetRowSpan(congratulationsBorder, 2 * cardRows + 3);
-                        Grid.SetColumn(congratulationsBorder, 0);
-                        Grid.SetColumnSpan(congratulationsBorder, 2 * cardCols + 3);
-                        Children.Add(congratulationsBorder);
+                        GameFinishedMessage gameFinishedMessage = new GameFinishedMessage();
+                        Grid.SetRow(gameFinishedMessage, 0);
+                        Grid.SetRowSpan(gameFinishedMessage, 2 * cardRows + 3);
+                        Grid.SetColumn(gameFinishedMessage, 0);
+                        Grid.SetColumnSpan(gameFinishedMessage, 2 * cardCols + 3);
+                        Children.Add(gameFinishedMessage);
                     }
                 }
             }
