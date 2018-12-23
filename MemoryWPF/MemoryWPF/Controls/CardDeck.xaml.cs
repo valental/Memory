@@ -26,7 +26,7 @@ namespace MemoryWPF.Controls
         );
 
         public static readonly DependencyProperty PairCountProperty = DependencyProperty.Register(
-            "PairCount", typeof(int), typeof(CardDeck), new PropertyMetadata(2)
+            "PairCount", typeof(int), typeof(CardDeck), new PropertyMetadata(0, OnPairCountChanged)
         );
         #endregion
 
@@ -40,14 +40,7 @@ namespace MemoryWPF.Controls
         public int PairCount
         {
             get { return (int)GetValue(PairCountProperty); }
-            set
-            {
-                SetValue(PairCountProperty, value);
-                if (value >= 2)
-                {
-                    DisplayCards();
-                }
-            }
+            set { SetValue(PairCountProperty, value); }
         }
         #endregion
 
@@ -179,6 +172,14 @@ namespace MemoryWPF.Controls
                 firstOpened = card;
                 secondOpened = null;
             }
+        }
+        #endregion
+
+        #region Event Handlers
+        private static void OnPairCountChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            CardDeck cardDeck = d as CardDeck;
+            cardDeck.DisplayCards();
         }
         #endregion
     }
