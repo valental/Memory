@@ -83,11 +83,8 @@ namespace MemoryWPF.Controls
         {
             if (!IsMatched && !IsOpen)
             {
-                IsOpen = true;
-            }
-            if (IsOpen)
-            {
                 OnCardClick(this, new EventArgs());
+                IsOpen = true;
             }
         }
         #endregion

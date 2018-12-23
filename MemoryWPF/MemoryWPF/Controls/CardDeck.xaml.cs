@@ -140,7 +140,9 @@ namespace MemoryWPF.Controls
             lastColumn.Width = new GridLength(1, GridUnitType.Star);
             ColumnDefinitions.Add(lastColumn);
         }
+        #endregion
 
+        #region Event Handlers
         private void CardOpenedHandler(object sender, EventArgs e)
         {
             Card card = sender as Card;
@@ -173,9 +175,7 @@ namespace MemoryWPF.Controls
                 secondOpened = null;
             }
         }
-        #endregion
 
-        #region Event Handlers
         private static void OnPairCountChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             CardDeck cardDeck = d as CardDeck;
