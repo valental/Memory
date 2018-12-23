@@ -48,6 +48,11 @@ namespace MemoryWPF.DataHelpers
             ThemeCardNamesCroatian[Theme.Animals] = new List<string>()
             {
                 "Lav",
+                "Žirafa",
+                "Krokodil",
+                "Slon",
+                "Nilski konj",
+                "Antilopa",
                 
                 // Add new animals here and don't forget the ','
             };
@@ -55,11 +60,12 @@ namespace MemoryWPF.DataHelpers
             ThemeCardImages[Theme.Animals] = new List<string>()
             {
                 path + theme + "animals_lion.png",
-                path + theme + "animals_giraffe.png",
-                path + theme + "animals_crocodile.png",
-                path + theme + "animals_elephant.png",
-                path + theme + "animals_hippo.png",
-                path + theme + "animals_antelope.png",
+                path + theme + "animals_giraffe.png",   // this picture still has to be created and added to Resources/Animals
+                path + theme + "animals_crocodile.png", // this picture still has to be created and added to Resources/Animals
+                path + theme + "animals_elephant.png",  // this picture still has to be created and added to Resources/Animals
+                path + theme + "animals_hippo.png",     // this picture still has to be created and added to Resources/Animals
+                path + theme + "animals_antelope.png",  // this picture still has to be created and added to Resources/Animals
+
                 // Add new animal images here and don't forget the ','
             };
             #endregion
@@ -69,6 +75,7 @@ namespace MemoryWPF.DataHelpers
             ThemeCardNamesEnglish[Theme.Math] = new List<string>()
             {
                 "Sinus",
+                "Cosinus",
                 
                 // Add new animals here and don't forget the ','
             };
@@ -76,13 +83,15 @@ namespace MemoryWPF.DataHelpers
             ThemeCardNamesCroatian[Theme.Math] = new List<string>()
             {
                 "Sinus",
-                
+                "Kosinus",
+
                 // Add new animals here and don't forget the ','
             };
 
             ThemeCardImages[Theme.Math] = new List<string>()
             {
                 path + theme + "math_sinus.png", // this picture still has to be created and added to Resources/Math
+                path + theme + "math_cosinus.png", // this picture still has to be created and added to Resources/Math,
 
                 // Add new animal images here and don't forget the ','
             };

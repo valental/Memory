@@ -40,7 +40,14 @@ namespace MemoryWPF.Controls
         public int PairCount
         {
             get { return (int)GetValue(PairCountProperty); }
-            set { SetValue(PairCountProperty, value); }
+            set
+            {
+                SetValue(PairCountProperty, value);
+                if (value >= 2)
+                {
+                    DisplayCards();
+                }
+            }
         }
         #endregion
 
@@ -70,6 +77,7 @@ namespace MemoryWPF.Controls
             }
             cardIDs.Shuffle();
 
+            Children.Clear();
             for (int i = 0; i < cardRows; i++)
             {
                 for (int j = 0; (j < cardCols) && (i * cardsInRow + j < 2 * PairCount); j++)
@@ -88,6 +96,7 @@ namespace MemoryWPF.Controls
 
         private void AddRows(int count)
         {
+            RowDefinitions.Clear();
             RowDefinition firstRow = new RowDefinition();
             firstRow.Height = new GridLength(1, GridUnitType.Star);
             RowDefinitions.Add(firstRow);
@@ -114,6 +123,7 @@ namespace MemoryWPF.Controls
 
         private void AddCols(int count)
         {
+            ColumnDefinitions.Clear();
             ColumnDefinition firstColumn = new ColumnDefinition();
             firstColumn.Width = new GridLength(1, GridUnitType.Star);
             ColumnDefinitions.Add(firstColumn);

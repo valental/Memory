@@ -14,7 +14,7 @@ namespace MemoryWPF.Controls
     {
         #region Dependecy Properties
         public static readonly DependencyProperty ThemeProperty = DependencyProperty.Register(
-            "Theme", typeof(Theme), typeof(Card), new PropertyMetadata(Theme.Animals)
+            "SelectedTheme", typeof(Theme), typeof(Card), new PropertyMetadata(Theme.Animals)
         );
 
         public static readonly DependencyProperty IDProperty = DependencyProperty.Register(

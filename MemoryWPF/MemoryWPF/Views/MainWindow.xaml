@@ -13,10 +13,26 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10 10 10 0">
+            <TextBlock Text="Theme:" Margin="0 0 5 0"/>
+            <ComboBox Width="100" ItemsSource="{Binding Themes, Mode=OneWay}" 
+                      SelectedItem="{Binding SelectedTheme, Mode=TwoWay}"/>
+            <TextBlock Text="Number of pairs:" Margin="20 0 5 0"/>
+            <ComboBox Width="50" ItemsSource="{Binding PairCounts, Mode=TwoWay}"
+                      SelectedItem="{Binding SelectedPairCount, Mode=TwoWay}"/>
+            <Button Content="Start!" Width="70" Margin="20 0 0 0"
+                    Command="{Binding StartCommand}"/>
+        </StackPanel>
         
-        
-        <controls:CardDeck Theme="{Binding Theme, Mode=OneWay}" 
-                           PairCount="{Binding PairCount, Mode=OneWay}"/>
-    </ScrollViewer>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="1">
+            <controls:CardDeck Theme="{Binding CurrentTheme, Mode=OneWay}" 
+                               PairCount="{Binding CurrentPairCount, Mode=OneWay}"/>
+        </ScrollViewer>
+    </Grid>
 </Window>

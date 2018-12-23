@@ -1,6 +1,7 @@
-﻿using MemoryWPF.DataHelpers;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+
+using MemoryWPF.DataHelpers;
 
 namespace MemoryWPF.Controls
 {
@@ -11,7 +12,7 @@ namespace MemoryWPF.Controls
     {
         #region Dependency Properties
         public static readonly DependencyProperty ThemeProperty = DependencyProperty.Register(
-            "Theme", typeof(Theme), typeof(GameFinishedMessage), new PropertyMetadata(Theme.Animals)
+            "SelectedTheme", typeof(Theme), typeof(GameFinishedMessage), new PropertyMetadata(Theme.Animals)
         );
         #endregion
 
@@ -21,9 +22,8 @@ namespace MemoryWPF.Controls
             get { return (Theme)GetValue(ThemeProperty); }
             set { SetValue(ThemeProperty, value); }
         }
-
-        private string message = "Game compleated!";
-        public string Message => message;
+        
+        public string Message => "Game completed!";
         #endregion
 
         public GameFinishedMessage()
