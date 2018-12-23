@@ -106,6 +106,7 @@ namespace MemoryWPF.ViewModels
         private void StartTheGame()
         {
             CurrentTheme = SelectedTheme;
+            CurrentPairCount = 0;
             CurrentPairCount = SelectedPairCount;
         }
         #endregion
