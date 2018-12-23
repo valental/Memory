@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -30,6 +31,8 @@ namespace MemoryWPF.Controls
         #endregion
 
         #region Public Properties
+        public event EventHandler OnCardClick;
+
         public Theme Theme
         {
             get { return (Theme)GetValue(ThemeProperty); }
@@ -76,10 +79,16 @@ namespace MemoryWPF.Controls
         #endregion
 
         #region Methods
-        private void Flip()
+        public void Flip()
         {
-            if (!IsMatched)
-                IsOpen = !IsOpen;
+            if (!IsMatched && !IsOpen)
+            {
+                IsOpen = true;
+            }
+            if (IsOpen)
+            {
+                OnCardClick(this, new EventArgs());
+            }
         }
         #endregion
     }

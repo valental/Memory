@@ -36,6 +36,11 @@ namespace MemoryWPF.DataHelpers
             ThemeCardNamesEnglish[Theme.Animals] = new List<string>()
             {
                 "Lion",
+                "Giraffe",
+                "Crocodile",
+                "Elephant",
+                "Hippo",
+                "Antelope",
                 
                 // Add new animals here and don't forget the ','
             };
@@ -50,7 +55,11 @@ namespace MemoryWPF.DataHelpers
             ThemeCardImages[Theme.Animals] = new List<string>()
             {
                 path + theme + "animals_lion.png",
-
+                path + theme + "animals_giraffe.png",
+                path + theme + "animals_crocodile.png",
+                path + theme + "animals_elephant.png",
+                path + theme + "animals_hippo.png",
+                path + theme + "animals_antelope.png",
                 // Add new animal images here and don't forget the ','
             };
             #endregion

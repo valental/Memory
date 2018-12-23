@@ -71,6 +71,7 @@
     <Compile Include="Converters\ThemeToStringConverter.cs" />
     <Compile Include="DataHelpers\CardData.cs" />
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="Utility.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Page Include="Controls\Card.xaml">
@@ -79,7 +80,7 @@
     </Page>
     <Page Include="Controls\CardDeck.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
     </Page>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

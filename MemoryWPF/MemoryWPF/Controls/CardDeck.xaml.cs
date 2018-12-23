@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,8 +10,16 @@ namespace MemoryWPF.Controls
     /// <summary>
     /// Interaction logic for CardDeck.xaml
     /// </summary>
-    public partial class CardDeck : UserControl
+    public partial class CardDeck : Grid
     {
+        private const int cardsInRow = 8;
+        private int cardRows;
+        private int cardCols;
+        private Card firstOpened;
+        private Card secondOpened;
+        private List<Card> cards = new List<Card>();
+        private int pairsMatched = 0;
+
         #region Dependecy Properties
         public static readonly DependencyProperty ThemeProperty = DependencyProperty.Register(
             "Theme", typeof(Theme), typeof(CardDeck), new PropertyMetadata(Theme.Animals)
@@ -40,19 +49,26 @@ namespace MemoryWPF.Controls
         {
             InitializeComponent();
 
-            Loaded += (sender, args) => DisplayCards(); 
+            Loaded += (sender, args) => DisplayCards();
         }
         #endregion
 
         #region Methods
         private void DisplayCards()
         {
-            const int cardsInRow = 8;
-            int cardRows = (int)Math.Ceiling((double)(2 * PairCount) / (double)cardsInRow);
-            int cardCols = 2 * PairCount < cardsInRow ? 2 * PairCount : cardsInRow;
+            cardRows = (int)Math.Ceiling((double)(2 * PairCount) / (double)cardsInRow);
+            cardCols = 2 * PairCount < cardsInRow ? 2 * PairCount : cardsInRow;
 
             AddRows(cardRows);
             AddCols(cardCols);
+
+            List<int> cardIDs = new List<int>();
+            for (int i = 0; i < PairCount; i++)
+            {
+                cardIDs.Add(i);
+                cardIDs.Add(i);
+            }
+            cardIDs.Shuffle();
 
             for (int i = 0; i < cardRows; i++)
             {
@@ -60,10 +76,12 @@ namespace MemoryWPF.Controls
                 {
                     Card card = new Card();
                     card.Theme = Theme;
-                    card.ID = 0;
+                    card.ID = cardIDs[i * cardsInRow + j];
                     Grid.SetRow(card, 2 * i + 2);
                     Grid.SetColumn(card, 2 * j + 2);
-                    CardGrid.Children.Add(card);
+                    card.OnCardClick += CardOpenedHandler;
+                    cards.Add(card);
+                    Children.Add(card);
                 }
             }
         }
@@ -72,52 +90,90 @@ namespace MemoryWPF.Controls
         {
             RowDefinition firstRow = new RowDefinition();
             firstRow.Height = new GridLength(1, GridUnitType.Star);
-            CardGrid.RowDefinitions.Add(firstRow);
+            RowDefinitions.Add(firstRow);
 
             for (int i = 0; i < count; i++)
             {
                 RowDefinition spaceBetween = new RowDefinition();
                 spaceBetween.Height = new GridLength(20);
-                CardGrid.RowDefinitions.Add(spaceBetween);
+                RowDefinitions.Add(spaceBetween);
 
                 RowDefinition cards = new RowDefinition();
                 cards.Height = GridLength.Auto;
-                CardGrid.RowDefinitions.Add(cards);
+                RowDefinitions.Add(cards);
             }
 
             RowDefinition lastSpaceBetween = new RowDefinition();
             lastSpaceBetween.Height = new GridLength(20);
-            CardGrid.RowDefinitions.Add(lastSpaceBetween);
+            RowDefinitions.Add(lastSpaceBetween);
 
             RowDefinition lastRow = new RowDefinition();
             lastRow.Height = new GridLength(1, GridUnitType.Star);
-            CardGrid.RowDefinitions.Add(lastRow);
+            RowDefinitions.Add(lastRow);
         }
 
         private void AddCols(int count)
         {
             ColumnDefinition firstColumn = new ColumnDefinition();
             firstColumn.Width = new GridLength(1, GridUnitType.Star);
-            CardGrid.ColumnDefinitions.Add(firstColumn);
+            ColumnDefinitions.Add(firstColumn);
 
             for (int i = 0; i < count; i++)
             {
                 ColumnDefinition spaceBetween = new ColumnDefinition();
                 spaceBetween.Width = new GridLength(20);
-                CardGrid.ColumnDefinitions.Add(spaceBetween);
+                ColumnDefinitions.Add(spaceBetween);
 
                 ColumnDefinition cards = new ColumnDefinition();
                 cards.Width = GridLength.Auto;
-                CardGrid.ColumnDefinitions.Add(cards);
+                ColumnDefinitions.Add(cards);
             }
 
             ColumnDefinition lastSpaceBetween = new ColumnDefinition();
             lastSpaceBetween.Width = new GridLength(20);
-            CardGrid.ColumnDefinitions.Add(lastSpaceBetween);
+            ColumnDefinitions.Add(lastSpaceBetween);
 
             ColumnDefinition lastColumn = new ColumnDefinition();
             lastColumn.Width = new GridLength(1, GridUnitType.Star);
-            CardGrid.ColumnDefinitions.Add(lastColumn);
+            ColumnDefinitions.Add(lastColumn);
+        }
+
+        private void CardOpenedHandler(object sender, EventArgs e)
+        {
+            Card card = sender as Card;
+            if (firstOpened != null && secondOpened == null)
+            {
+                secondOpened = card;
+                if (firstOpened.ID == secondOpened.ID)
+                {
+                    firstOpened.IsMatched = true;
+                    secondOpened.IsMatched = true;
+                    firstOpened = null;
+                    secondOpened = null;
+                    pairsMatched++;
+                    if (pairsMatched == PairCount)
+                    {
+                        Border congratulationsBorder = new Border();
+                        TextBlock congratulationsTextBlock = new TextBlock();
+                        congratulationsTextBlock.Text = "Congratulations!";
+                        congratulationsBorder.Child = congratulationsTextBlock;
+                        congratulationsBorder.VerticalAlignment = VerticalAlignment.Center;
+                        congratulationsBorder.HorizontalAlignment = HorizontalAlignment.Center;
+                        Grid.SetRow(congratulationsBorder, 0);
+                        Grid.SetRowSpan(congratulationsBorder, 2 * cardRows + 3);
+                        Grid.SetColumn(congratulationsBorder, 0);
+                        Grid.SetColumnSpan(congratulationsBorder, 2 * cardCols + 3);
+                        Children.Add(congratulationsBorder);
+                    }
+                }
+            }
+            else
+            {
+                if (firstOpened != null) firstOpened.IsOpen = false;
+                if (secondOpened != null) secondOpened.IsOpen = false;
+                firstOpened = card;
+                secondOpened = null;
+            }
         }
         #endregion
     }

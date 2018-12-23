@@ -4,7 +4,7 @@ namespace MemoryWPF.ViewModels
 {
     public class MainWindowViewModel : BaseViewModel
     {
-        private Theme theme = Theme.Math;
+        private Theme theme = Theme.Animals;
         public Theme Theme
         {
             get => theme;
@@ -15,7 +15,7 @@ namespace MemoryWPF.ViewModels
             }
         }
 
-        private int pairCount = 3;
+        private int pairCount = 1;
         public int PairCount
         {
             get => pairCount;

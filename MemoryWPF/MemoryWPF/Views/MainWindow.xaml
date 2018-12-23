@@ -14,32 +14,8 @@
         <vm:MainWindowViewModel/>
     </Window.DataContext>
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-        <!--<Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <controls:Card Theme="Animals" ID="0" Grid.Row="2" Grid.Column="2"/>
-            <controls:Card Theme="Animals" ID="0" Grid.Row="2" Grid.Column="4"/>
-            <controls:Card Theme="Math" ID="0" Grid.Row="2" Grid.Column="6"/>
-            <controls:Card Theme="Math" ID="0" Grid.Row="2" Grid.Column="8"/>
-        </Grid>-->
+        
+        
         <controls:CardDeck Theme="{Binding Theme, Mode=OneWay}" 
                            PairCount="{Binding PairCount, Mode=OneWay}"/>
     </ScrollViewer>
