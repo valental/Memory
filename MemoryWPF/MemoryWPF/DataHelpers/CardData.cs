@@ -5,7 +5,7 @@ namespace MemoryWPF.DataHelpers
 {
     public enum Theme
     {
-        Animals,
+        WildAnimals,
         Math,
         // Add new themes here
     }
@@ -25,48 +25,66 @@ namespace MemoryWPF.DataHelpers
             string theme;
 
             #region Colors
-            ThemeColors[Theme.Animals] = Brushes.Red;
+            ThemeColors[Theme.WildAnimals] = Brushes.Red;
             ThemeColors[Theme.Math] = Brushes.DarkBlue;
 
             // Add colors for new themes here 
             #endregion
 
-            #region Animals
-            theme = "Animals/";
-            ThemeCardNamesEnglish[Theme.Animals] = new List<string>()
+            #region WildAnimals
+            theme = "Wild_Animals/";
+            ThemeCardNamesEnglish[Theme.WildAnimals] = new List<string>()
             {
                 "Lion",
-                "Giraffe",
-                "Crocodile",
+                "Bear",
                 "Elephant",
+                "Gazelle",
+                "Giraffe",
+                "Gorilla",
                 "Hippo",
-                "Antelope",
+                "Orca",
+                "Panda",
+                "Penguin",
+                "Tiger",
+                "Zebra",
                 
                 // Add new animals here and don't forget the ','
             };
 
-            ThemeCardNamesCroatian[Theme.Animals] = new List<string>()
+            ThemeCardNamesCroatian[Theme.WildAnimals] = new List<string>()
             {
                 "Lav",
-                "Žirafa",
-                "Krokodil",
+                "Medvjed",
                 "Slon",
+                "Gazela",
+                "Žirafa",
+                "Gorila",
                 "Nilski konj",
-                "Antilopa",
+                "Orka",
+                "Panda",
+                "Pingvin",
+                "Tigar",
+                "Zebra",
                 
                 // Add new animals here and don't forget the ','
             };
 
-            ThemeCardImages[Theme.Animals] = new List<string>()
+            ThemeCardImages[Theme.WildAnimals] = new List<string>()
             {
-                path + theme + "animals_lion.png",
-                path + theme + "animals_giraffe.png",   // this picture still has to be created and added to Resources/Animals
-                path + theme + "animals_crocodile.png", // this picture still has to be created and added to Resources/Animals
-                path + theme + "animals_elephant.png",  // this picture still has to be created and added to Resources/Animals
-                path + theme + "animals_hippo.png",     // this picture still has to be created and added to Resources/Animals
-                path + theme + "animals_antelope.png",  // this picture still has to be created and added to Resources/Animals
+                path + theme + "wild_animals_lion.png",
+                path + theme + "wild_animals_bear.jpg",   
+                path + theme + "wild_animals_elephant.jpg", 
+                path + theme + "wild_animals_gazelle.png",  
+                path + theme + "wild_animals_giraffe.jpg",   
+                path + theme + "wild_animals_gorilla.jpg",
+                path + theme + "wild_animals_hippo.png",
+                path + theme + "wild_animals_orca.jpg",
+                path + theme + "wild_animals_panda.jpg",
+                path + theme + "wild_animals_penguin.jpg",
+                path + theme + "wild_animals_tiger.jpg",
+                path + theme + "wild_animals_zebra.jpg",
 
-                // Add new animal images here and don't forget the ','
+
             };
             #endregion
 
