@@ -11,7 +11,7 @@ namespace MemoryWPF.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            Theme theme = Theme.Animals;
+            Theme theme = Theme.WildAnimals;
             int id = 0;
             if (values[0] != DependencyProperty.UnsetValue)
             {

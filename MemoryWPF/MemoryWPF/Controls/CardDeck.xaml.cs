@@ -22,7 +22,7 @@ namespace MemoryWPF.Controls
 
         #region Dependecy Properties
         public static readonly DependencyProperty ThemeProperty = DependencyProperty.Register(
-            "Theme", typeof(Theme), typeof(CardDeck), new PropertyMetadata(Theme.Animals)
+            "Theme", typeof(Theme), typeof(CardDeck), new PropertyMetadata(Theme.WildAnimals)
         );
 
         public static readonly DependencyProperty PairCountProperty = DependencyProperty.Register(

@@ -132,10 +132,76 @@
     <Folder Include="Resources\Math\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Animals\animals_lion.png" />
+    <Resource Include="brain_icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="brain_icon.ico" />
+    <Resource Include="Resources\Wild_Animals\wild_animals_bear.jpg" />
+    <Resource Include="Resources\Wild_Animals\wild_animals_elephant.jpg" />
+    <Resource Include="Resources\Wild_Animals\wild_animals_gazelle.png" />
+    <Resource Include="Resources\Wild_Animals\wild_animals_giraffe.jpg" />
+    <Resource Include="Resources\Wild_Animals\wild_animals_gorilla.jpg" />
+    <Resource Include="Resources\Wild_Animals\wild_animals_hippo.png" />
+    <Resource Include="Resources\Wild_Animals\wild_animals_lion.png" />
+    <Resource Include="Resources\Wild_Animals\wild_animals_orca.jpg" />
+    <Resource Include="Resources\Wild_Animals\wild_animals_panda.jpg" />
+    <Resource Include="Resources\Wild_Animals\wild_animals_penguin.jpg" />
+    <Resource Include="Resources\Wild_Animals\wild_animals_tiger.jpg" />
+    <Resource Include="Resources\Wild_Animals\wild_animals_zebra.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Farm_Animals\farm_animals_cat.png" />
+    <Resource Include="Resources\Farm_Animals\farm_animals_chicken.jpg" />
+    <Resource Include="Resources\Farm_Animals\farm_animals_cow.png" />
+    <Resource Include="Resources\Farm_Animals\farm_animals_dog.png" />
+    <Resource Include="Resources\Farm_Animals\farm_animals_donkey.png" />
+    <Resource Include="Resources\Farm_Animals\farm_animals_duck.png" />
+    <Resource Include="Resources\Farm_Animals\farm_animals_goat.jpg" />
+    <Resource Include="Resources\Farm_Animals\farm_animals_goose.png" />
+    <Resource Include="Resources\Farm_Animals\farm_animals_horse.png" />
+    <Resource Include="Resources\Farm_Animals\farm_animals_pig.png" />
+    <Resource Include="Resources\Farm_Animals\farm_animals_rabbit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Cities\cities_agra.png" />
+    <Resource Include="Resources\Cities\cities_barcelona.png" />
+    <Resource Include="Resources\Cities\cities_dubai.png" />
+    <Resource Include="Resources\Cities\cities_london.jpg" />
+    <Resource Include="Resources\Cities\cities_moscow.png" />
+    <Resource Include="Resources\Cities\cities_newyork.png" />
+    <Resource Include="Resources\Cities\cities_paris.jpg" />
+    <Resource Include="Resources\Cities\cities_riodejanero.png" />
+    <Resource Include="Resources\Cities\cities_rome.png" />
+    <Resource Include="Resources\Cities\cities_sanfrancisco.png" />
+    <Resource Include="Resources\Cities\cities_sydney.png" />
+    <Resource Include="Resources\Cities\cities_zagreb.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Singers\singers_adele.png" />
+    <Resource Include="Resources\Singers\singers_beyonce.png" />
+    <Resource Include="Resources\Singers\singers_enriqueiglesias.png" />
+    <Resource Include="Resources\Singers\singers_freddiemercury.png" />
+    <Resource Include="Resources\Singers\singers_justinbieber.png" />
+    <Resource Include="Resources\Singers\singers_justintimberlake.png" />
+    <Resource Include="Resources\Singers\singers_madonna.png" />
+    <Resource Include="Resources\Singers\singers_michaeljackson.png" />
+    <Resource Include="Resources\Singers\singers_rihanna.png" />
+    <Resource Include="Resources\Singers\singers_selenagomez.png" />
+    <Resource Include="Resources\Singers\singers_shakira.png" />
+    <Resource Include="Resources\Singers\singers_snoopdogg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Actors\actors_angelinajolie.png" />
+    <Resource Include="Resources\Actors\actors_annehathaway.png" />
+    <Resource Include="Resources\Actors\actors_bradpitt.png" />
+    <Resource Include="Resources\Actors\actors_christianbale.png" />
+    <Resource Include="Resources\Actors\actors_emmawatson.png" />
+    <Resource Include="Resources\Actors\actors_georgeclooney.png" />
+    <Resource Include="Resources\Actors\actors_jimcarrey.png" />
+    <Resource Include="Resources\Actors\actors_juliaroberts.png" />
+    <Resource Include="Resources\Actors\actors_leonardodicaprio.png" />
+    <Resource Include="Resources\Actors\actors_natalieportman.png" />
+    <Resource Include="Resources\Actors\actors_rowanatkinson.png" />
+    <Resource Include="Resources\Actors\actors_tomhanks.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

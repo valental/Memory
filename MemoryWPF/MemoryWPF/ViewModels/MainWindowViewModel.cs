@@ -13,7 +13,7 @@ namespace MemoryWPF.ViewModels
         #region Public Properties
         public IEnumerable Themes => Enum.GetValues(typeof(Theme)).Cast<Theme>();
 
-        private Theme selectedTheme = Theme.Animals;
+        private Theme selectedTheme = Theme.WildAnimals;
         public Theme SelectedTheme
         {
             get => selectedTheme;
@@ -26,7 +26,7 @@ namespace MemoryWPF.ViewModels
             }
         }
 
-        private Theme currentTheme = Theme.Animals;
+        private Theme currentTheme = Theme.WildAnimals;
         public Theme CurrentTheme
         {
             get => currentTheme;
@@ -37,7 +37,7 @@ namespace MemoryWPF.ViewModels
             }
         }
 
-        private ObservableCollection<int> pairCounts = SetPairCounts(Theme.Animals);
+        private ObservableCollection<int> pairCounts = SetPairCounts(Theme.WildAnimals);
         public ObservableCollection<int> PairCounts
         {
             get => pairCounts;
