@@ -203,5 +203,36 @@
     <Resource Include="Resources\Actors\actors_rowanatkinson.png" />
     <Resource Include="Resources\Actors\actors_tomhanks.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Instruments\instruments_accordion.png" />
+    <Resource Include="Resources\Instruments\instruments_cello.png" />
+    <Resource Include="Resources\Instruments\instruments_clarinet.png" />
+    <Resource Include="Resources\Instruments\instruments_drum.png" />
+    <Resource Include="Resources\Instruments\instruments_flute.png" />
+    <Resource Include="Resources\Instruments\instruments_guitar.png" />
+    <Resource Include="Resources\Instruments\instruments_harp.png" />
+    <Resource Include="Resources\Instruments\instruments_piano.png" />
+    <Resource Include="Resources\Instruments\instruments_saxophone.png" />
+    <Resource Include="Resources\Instruments\instruments_triangle.png" />
+    <Resource Include="Resources\Instruments\instruments_trumpet.png" />
+    <Resource Include="Resources\Instruments\instruments_violin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Sports\sports_basketball.png" />
+    <Resource Include="Resources\Sports\sports_boxing.png" />
+    <Resource Include="Resources\Sports\sports_cycling.png" />
+    <Resource Include="Resources\Sports\sports_football.png" />
+    <Resource Include="Resources\Sports\sports_golf.png" />
+    <Resource Include="Resources\Sports\sports_highjump.png" />
+    <Resource Include="Resources\Sports\sports_iceskating.png" />
+    <Resource Include="Resources\Sports\sports_running.png" />
+    <Resource Include="Resources\Sports\sports_skiing.png" />
+    <Resource Include="Resources\Sports\sports_tennis.png" />
+    <Resource Include="Resources\Sports\sports_volleyball.png" />
+    <Resource Include="Resources\Sports\sports_waterpolo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Farm_Animals\farm_animals_sheep.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
