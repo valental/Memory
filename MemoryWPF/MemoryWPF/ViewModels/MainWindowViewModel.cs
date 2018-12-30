@@ -11,6 +11,16 @@ namespace MemoryWPF.ViewModels
     public class MainWindowViewModel : BaseViewModel
     {
         #region Public Properties
+        private string playerName = "Guest";
+        public string PlayerName
+        {
+            get => playerName;
+            set
+            {
+                playerName = value == "" ? "Guest" : value;
+                OnPropertyChanged("PlayerName");
+            }
+        }
         public IEnumerable Themes => Enum.GetValues(typeof(Theme)).Cast<Theme>();
 
         private Theme selectedTheme = Theme.WildAnimals;
@@ -30,22 +40,14 @@ namespace MemoryWPF.ViewModels
         public Theme CurrentTheme
         {
             get => currentTheme;
-            set
-            {
-                currentTheme = value;
-                OnPropertyChanged("CurrentTheme");
-            }
+            set { currentTheme = value; OnPropertyChanged("CurrentTheme"); }
         }
 
         private ObservableCollection<int> pairCounts = SetPairCounts(Theme.WildAnimals);
         public ObservableCollection<int> PairCounts
         {
             get => pairCounts;
-            set
-            {
-                pairCounts = value;
-                OnPropertyChanged("PairCounts");
-            }
+            set { pairCounts = value; OnPropertyChanged("PairCounts"); }
         }
 
         private int selectedPairCount = 2;
@@ -82,6 +84,17 @@ namespace MemoryWPF.ViewModels
                 return startCommand;
             }
         }
+
+        private RelayCommand scoreCommand;
+        public ICommand ScoreCommand
+        {
+            get
+            {
+                if (scoreCommand == null)
+                    scoreCommand = new RelayCommand(ShowHighscores);
+                return scoreCommand;
+            }
+        }
         #endregion
 
         #region Constructor
@@ -108,6 +121,11 @@ namespace MemoryWPF.ViewModels
             CurrentTheme = SelectedTheme;
             CurrentPairCount = 0;
             CurrentPairCount = SelectedPairCount;
+        }
+
+        private void ShowHighscores()
+        {
+            
         }
         #endregion
     }
