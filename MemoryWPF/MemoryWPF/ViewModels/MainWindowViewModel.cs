@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
+using CsvHelper;
 
 using MemoryWPF.DataHelpers;
 
@@ -16,11 +18,16 @@ namespace MemoryWPF.ViewModels
         {
             get => playerName;
             set
-            {
-                playerName = value == "" ? "Guest" : value;
-                OnPropertyChanged("PlayerName");
-            }
+            { playerName = value == "" ? "Guest" : value; OnPropertyChanged("PlayerName"); }
         }
+
+        private bool showScores = false;
+        public bool ShowScores
+        {
+            get => showScores;
+            set { showScores = value; OnPropertyChanged("ShowScores"); }
+        }
+
         public IEnumerable Themes => Enum.GetValues(typeof(Theme)).Cast<Theme>();
 
         private Theme selectedTheme = Theme.WildAnimals;
@@ -55,10 +62,7 @@ namespace MemoryWPF.ViewModels
         {
             get => selectedPairCount;
             set
-            {
-                selectedPairCount = value;
-                OnPropertyChanged("SelectedPairCount");
-            }
+            { selectedPairCount = value; OnPropertyChanged("SelectedPairCount"); }
         }
 
         private int currentPairCount = 0;
@@ -66,10 +70,7 @@ namespace MemoryWPF.ViewModels
         {
             get => currentPairCount;
             set
-            {
-                currentPairCount = value;
-                OnPropertyChanged("CurrentPairCount");
-            }
+            { currentPairCount = value; OnPropertyChanged("CurrentPairCount"); }
         }
         #endregion
 
@@ -121,11 +122,13 @@ namespace MemoryWPF.ViewModels
             CurrentTheme = SelectedTheme;
             CurrentPairCount = 0;
             CurrentPairCount = SelectedPairCount;
+            CurrentGameData.Game = new GameData(PlayerName, TimeSpan.Zero, 0);
+            CurrentGameData.StartTime = DateTime.Now;
         }
 
         private void ShowHighscores()
         {
-            
+            ShowScores = !ShowScores;
         }
         #endregion
     }

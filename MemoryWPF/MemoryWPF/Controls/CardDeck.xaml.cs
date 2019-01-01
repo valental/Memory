@@ -146,6 +146,8 @@ namespace MemoryWPF.Controls
         #region Event Handlers
         private void CardOpenedHandler(object sender, EventArgs e)
         {
+            CurrentGameData.Game.NumberOfPairsOpened++;
+
             Card card = sender as Card;
             if (firstOpened != null && secondOpened == null)
             {
@@ -159,6 +161,10 @@ namespace MemoryWPF.Controls
                     pairsMatched++;
                     if (pairsMatched == PairCount)
                     {
+                        CurrentGameData.Game.NumberOfPairsOpened /= 2;
+                        CurrentGameData.Game.Time = DateTime.Now - CurrentGameData.StartTime;
+                        ScoresManager.UpdateRankList(Theme, PairCount, CurrentGameData.Game);
+
                         GameFinishedMessage gameFinishedMessage = new GameFinishedMessage();
                         gameFinishedMessage.Theme = Theme;
                         Grid.SetRow(gameFinishedMessage, 0);

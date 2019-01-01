@@ -13,6 +13,7 @@
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -36,10 +37,13 @@
             <Button Content="Start!" Width="70" Height="21" Margin="20 0 0 0"
                     Command="{Binding StartCommand}"/>
         </StackPanel>
-        
+        <Button Grid.Row="2" Visibility="{Binding ShowScores, Mode=OneWay, Converter={StaticResource BoolToVis}}"
+                Content="Button" Margin="10,10,0,0" Width="75"/>
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="2">
             <controls:CardDeck Theme="{Binding CurrentTheme, Mode=OneWay}" 
                                PairCount="{Binding CurrentPairCount, Mode=OneWay}"/>
         </ScrollViewer>
+        
+        
     </Grid>
 </Window>

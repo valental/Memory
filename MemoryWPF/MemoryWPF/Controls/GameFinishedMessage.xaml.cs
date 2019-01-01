@@ -23,7 +23,7 @@ namespace MemoryWPF.Controls
             set { SetValue(ThemeProperty, value); }
         }
         
-        public string Message => "Game completed!";
+        public string Message => "Game completed in " + CurrentGameData.Game.Time.ToString() + " with " + CurrentGameData.Game.NumberOfPairsOpened + " opened!";
         #endregion
 
         public GameFinishedMessage()
