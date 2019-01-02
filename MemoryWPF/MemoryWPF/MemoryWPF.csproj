@@ -78,6 +78,7 @@
     <Compile Include="Converters\ThemeAndIdToNameConverter.cs" />
     <Compile Include="Converters\ThemeToColorConverter.cs" />
     <Compile Include="Converters\ThemeToStringConverter.cs" />
+    <Compile Include="Converters\TimeSpanToSecondsConverter.cs" />
     <Compile Include="DataHelpers\CardData.cs" />
     <Compile Include="DataHelpers\CurrentGameData.cs" />
     <Compile Include="DataHelpers\GameData.cs" />

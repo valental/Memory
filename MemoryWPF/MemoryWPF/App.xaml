@@ -11,5 +11,6 @@
         <converters:ThemeToColorConverter x:Key="ThemeToColorConverter"/>
         <converters:ThemeAndIdToNameConverter x:Key="ThemeAndIdToNameConverter"/>
         <converters:ThemeAndIdToImageConverter x:Key="ThemeAndIdToImageConverter"/>
+        <converters:TimeSpanToSecondsConverter x:Key="TimeSpanToSecondsConverter"/>
     </Application.Resources>
 </Application>
