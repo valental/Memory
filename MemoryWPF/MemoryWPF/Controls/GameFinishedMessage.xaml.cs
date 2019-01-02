@@ -22,8 +22,9 @@ namespace MemoryWPF.Controls
             get { return (Theme)GetValue(ThemeProperty); }
             set { SetValue(ThemeProperty, value); }
         }
-        
-        public string Message => "Game completed in " + CurrentGameData.Game.Time.ToString() + " with " + CurrentGameData.Game.NumberOfPairsOpened + " opened!";
+        double temp = (double)CurrentGameData.Game.Time.Seconds + ((double)CurrentGameData.Game.Time.Milliseconds / 1000);
+        public string Message => "Game completed!\nTime: " + temp.ToString() + "s\nPairs opened: "
+                                + CurrentGameData.Game.NumberOfPairsOpened;
         #endregion
 
         public GameFinishedMessage()

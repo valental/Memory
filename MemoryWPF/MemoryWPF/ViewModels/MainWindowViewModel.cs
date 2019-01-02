@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
@@ -72,6 +73,14 @@ namespace MemoryWPF.ViewModels
             set
             { currentPairCount = value; OnPropertyChanged("CurrentPairCount"); }
         }
+
+        private List<string> rankList;
+        public List<string> RankList
+        {
+            get => rankList;
+            set { rankList = value; OnPropertyChanged("RankList"); }
+        }
+
         #endregion
 
         #region Commands
@@ -94,6 +103,17 @@ namespace MemoryWPF.ViewModels
                 if (scoreCommand == null)
                     scoreCommand = new RelayCommand(ShowHighscores);
                 return scoreCommand;
+            }
+        }
+
+        private RelayCommand listScoreCommand;
+        public ICommand ListScoreCommand
+        {
+            get
+            {
+                if (listScoreCommand == null)
+                    listScoreCommand = new RelayCommand(FetchHighscores);
+                return listScoreCommand;
             }
         }
         #endregion
@@ -130,6 +150,21 @@ namespace MemoryWPF.ViewModels
         {
             ShowScores = !ShowScores;
         }
+
+        private void FetchHighscores()
+        {
+            List<GameData> tempScoresList = new List<GameData>();
+            tempScoresList = ScoresManager.GetRankList(SelectedTheme, SelectedPairCount);
+            List<string> temp = new List<string>();
+            //RankList.Clear();
+            for (int i = 0; i < tempScoresList.Count; i++ )
+            {
+                temp.Add(tempScoresList[i].PlayerName + " " + tempScoresList[i].Time.TotalMilliseconds.ToString() 
+                    + "ms " + tempScoresList[i].NumberOfPairsOpened.ToString());
+            }
+            RankList = temp;
+        }
+             
         #endregion
     }
 }

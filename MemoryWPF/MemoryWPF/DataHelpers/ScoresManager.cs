@@ -48,7 +48,28 @@ namespace MemoryWPF.DataHelpers
             {
                 List<GameData> list = GetRankList(t, size);
 
-                if (list[list.Count - 1].Time > data.Time) 
+                if (list.Count < 10)
+                {
+                    int index = list.FindIndex(player => player.PlayerName == data.PlayerName);
+
+                    if (index != -1) // there is already a player with the same playerName in the list
+                    {
+                        if (list[index].Time > data.Time) // player broke his own record
+                        {
+                            list[index].Time = data.Time;
+                            list[index].NumberOfPairsOpened = data.NumberOfPairsOpened;
+                        }
+                    }
+
+                    else
+                        list.Add(new GameData(data.PlayerName, data.Time, data.NumberOfPairsOpened));
+
+                    list.Sort((a, b) => a.Time.CompareTo(b.Time));
+
+
+                }
+
+                else if (list[list.Count - 1].Time > data.Time)
                 {
                     int index = list.FindIndex(player => player.PlayerName == data.PlayerName);
 
@@ -68,14 +89,18 @@ namespace MemoryWPF.DataHelpers
                     }
 
                     list.Sort((a, b) => a.Time.CompareTo(b.Time));
+                }
 
-                    StreamWriter sw = new StreamWriter(filename);
+                using (StreamWriter sw = File.CreateText(filename))
+                {
                     for (int i = 0; i < list.Count; i++)
                     {
                         string line = list[i].PlayerName + "," + list[i].Time.ToString() + "," + list[i].NumberOfPairsOpened.ToString();
                         sw.WriteLine(line);
                     }
                 }
+                
+                
             }
 
         }
