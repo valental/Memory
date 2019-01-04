@@ -238,5 +238,10 @@
   <ItemGroup>
     <Resource Include="Resources\Farm_Animals\farm_animals_sheep.png" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CsvHelper">
+      <Version>12.1.1</Version>
+    </PackageReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
