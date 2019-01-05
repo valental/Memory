@@ -27,7 +27,11 @@ namespace MemoryWPF.DataHelpers
             /*if (list.Count < 10)
             {
                 for (int i = 0; i < 10 - list.Count; i++)
+                {
                     list.Add(new GameData("", TimeSpan.Zero, 0));
+                    list[list.Count - 1].Rank = list.Count;
+                }
+
             }*/
 
             return list;

@@ -17,7 +17,7 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -31,22 +31,19 @@
             <Label>Number of pairs:</Label>
             <ComboBox VerticalAlignment="Center" Margin="0 0 10 0" Width="50" ItemsSource="{Binding PairCounts, Mode=TwoWay}"
                       SelectedItem="{Binding SelectedPairCount, Mode=TwoWay}"/>
-        </StackPanel>
-
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="10 10 10 0">
             <Button Content="Start!" Width="70" Height="21" Margin="20 0 0 0"
                     Command="{Binding StartCommand}"/>
             <Button Content="{Binding BtnText, Mode=TwoWay}" Width="80" Height="21" Margin="20 0 0 0"
                     Command="{Binding ScoreCommand}"/>
         </StackPanel>
 
-        
+
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="3" >
             <controls:CardDeck Theme="{Binding CurrentTheme, Mode=OneWay}" 
                                PairCount="{Binding CurrentPairCount, Mode=OneWay}" />
         </ScrollViewer>
 
-        <Grid Grid.Row="2" Panel.ZIndex="2" HorizontalAlignment="Center" Background="White"
+        <Grid Grid.Row="2" Panel.ZIndex="2" HorizontalAlignment="Center" Background="SeaGreen"
               Visibility="{Binding ShowScores, Mode=OneWay, Converter={StaticResource BoolToVis}}" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="80"/>
@@ -60,11 +57,12 @@
             <TextBlock Grid.Column="3" HorizontalAlignment="Center" FontSize="15" FontWeight="Bold" Text="OTVORENI PAROVI" TextWrapping="Wrap"/>
         </Grid>
         <ItemsControl Grid.Row="3" Panel.ZIndex="2" HorizontalAlignment="Center"
-                      ItemsSource="{Binding RankList}" Background="White"
+                      ItemsSource="{Binding RankList}" 
                       Visibility="{Binding ShowScores, Mode=OneWay, Converter={StaticResource BoolToVis}}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Border BorderBrush="LightBlue" BorderThickness="1">
+                    <Grid Background="DarkSeaGreen">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="80"/>
                             <ColumnDefinition Width="200"/>
@@ -76,6 +74,7 @@
                         <TextBlock Grid.Column="2"  HorizontalAlignment="Center" FontSize="18"  Text="{Binding Path=Time, Converter={StaticResource TimeSpanToSecondsConverter}}"/>
                         <TextBlock Grid.Column="3"  HorizontalAlignment="Center" FontSize="18"  Text="{Binding Path=NumberOfPairsOpened}"/>
                     </Grid>
+                    </Border>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>

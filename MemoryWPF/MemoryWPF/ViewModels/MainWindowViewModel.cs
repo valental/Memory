@@ -133,7 +133,11 @@ namespace MemoryWPF.ViewModels
         private void StartTheGame()
         {
             if (ShowScores)
+            {
                 ShowScores = false;
+                BtnText = "Show scores!";
+            }
+
             CurrentTheme = SelectedTheme;
             CurrentPairCount = 0;
             CurrentPairCount = SelectedPairCount;
@@ -145,6 +149,16 @@ namespace MemoryWPF.ViewModels
         {
             ShowScores = !ShowScores;
             RankList = new ObservableCollection<GameData>(ScoresManager.GetRankList(SelectedTheme, SelectedPairCount));
+            if(RankList.Count < 10)
+            {
+                int count = RankList.Count;
+                for(int i = 0; i < 10-count; i++)
+                {
+                    RankList.Add(new GameData("-",TimeSpan.Zero,0));
+                    RankList[RankList.Count - 1].Rank = RankList.Count;
+                }
+            }
+
             if (BtnText == "Show scores!")
                 BtnText = "Hide scores!";
             else
