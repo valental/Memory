@@ -37,7 +37,6 @@
                     Command="{Binding ScoreCommand}"/>
         </StackPanel>
 
-
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="3" >
             <controls:CardDeck Theme="{Binding CurrentTheme, Mode=OneWay}" 
                                PairCount="{Binding CurrentPairCount, Mode=OneWay}" />
@@ -69,10 +68,10 @@
                             <ColumnDefinition Width="150"/>
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0"  HorizontalAlignment="Center" FontSize="18"  Text="{Binding Path=Rank}"/>
-                        <TextBlock Grid.Column="1"  HorizontalAlignment="Center" FontSize="18"  Text="{Binding Path=PlayerName}"/>
-                        <TextBlock Grid.Column="2"  HorizontalAlignment="Center" FontSize="18"  Text="{Binding Path=Time, Converter={StaticResource TimeSpanToSecondsConverter}}"/>
-                        <TextBlock Grid.Column="3"  HorizontalAlignment="Center" FontSize="18"  Text="{Binding Path=NumberOfPairsOpened}"/>
+                        <TextBlock Grid.Column="0" HorizontalAlignment="Center" FontSize="18" Text="{Binding Path=Rank}"/>
+                        <TextBlock Grid.Column="1" HorizontalAlignment="Center" FontSize="18" Text="{Binding Path=PlayerName}"/>
+                        <TextBlock Grid.Column="2" HorizontalAlignment="Center" FontSize="18" Text="{Binding Path=Time, Converter={StaticResource TimeSpanToSecondsConverter}}"/>
+                        <TextBlock Grid.Column="3" HorizontalAlignment="Center" FontSize="18" Text="{Binding Path=NumberOfPairsOpened}"/>
                     </Grid>
                     </Border>
                 </DataTemplate>
