@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Globalization;
-using System.Windows;
 using System.Windows.Data;
 
 namespace MemoryWPF.Converters
 {
-    class TimeSpanToSecondsConverter: IValueConverter
+    class ZeroToDashConverter: IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            TimeSpan time = (TimeSpan)value;
+            int cardNumber = (int)value;
 
-            if (time == TimeSpan.Zero)
+            if (cardNumber == 0)
                 return "-";
 
-            double temp = (double)time.Seconds + ((double)time.Milliseconds / 1000);
-            return temp.ToString();
+            else
+                return cardNumber.ToString();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

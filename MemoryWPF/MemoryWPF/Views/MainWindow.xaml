@@ -55,7 +55,7 @@
             <TextBlock Grid.Column="2" HorizontalAlignment="Center" Margin="0 10 0 0" FontSize="15" FontWeight="Bold" Text="VRIJEME (s)"/>
             <TextBlock Grid.Column="3" HorizontalAlignment="Center" FontSize="15" FontWeight="Bold" Text="OTVORENI PAROVI" TextWrapping="Wrap"/>
         </Grid>
-        <ItemsControl Grid.Row="3" Panel.ZIndex="2" HorizontalAlignment="Center"
+        <ItemsControl Grid.Row="3" Panel.ZIndex="2" HorizontalAlignment="Center" Margin="0 0 0 20"
                       ItemsSource="{Binding RankList}" 
                       Visibility="{Binding ShowScores, Mode=OneWay, Converter={StaticResource BoolToVis}}">
             <ItemsControl.ItemTemplate>
@@ -71,7 +71,7 @@
                         <TextBlock Grid.Column="0" HorizontalAlignment="Center" FontSize="18" Text="{Binding Path=Rank}"/>
                         <TextBlock Grid.Column="1" HorizontalAlignment="Center" FontSize="18" Text="{Binding Path=PlayerName}"/>
                         <TextBlock Grid.Column="2" HorizontalAlignment="Center" FontSize="18" Text="{Binding Path=Time, Converter={StaticResource TimeSpanToSecondsConverter}}"/>
-                        <TextBlock Grid.Column="3" HorizontalAlignment="Center" FontSize="18" Text="{Binding Path=NumberOfPairsOpened}"/>
+                        <TextBlock Grid.Column="3" HorizontalAlignment="Center" FontSize="18" Text="{Binding Path=NumberOfPairsOpened, Converter={StaticResource ZeroToDashConverter}}"/>
                     </Grid>
                     </Border>
                 </DataTemplate>
