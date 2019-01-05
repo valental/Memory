@@ -19,6 +19,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10 10 10 0">
@@ -35,39 +36,48 @@
         <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="10 10 10 0">
             <Button Content="Start!" Width="70" Height="21" Margin="20 0 0 0"
                     Command="{Binding StartCommand}"/>
-            <Button Content="Scores" Width="70" Height="21" Margin="20 0 0 0"
+            <Button Content="{Binding BtnText, Mode=TwoWay}" Width="80" Height="21" Margin="20 0 0 0"
                     Command="{Binding ScoreCommand}"/>
         </StackPanel>
 
         
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="2">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="3" >
             <controls:CardDeck Theme="{Binding CurrentTheme, Mode=OneWay}" 
                                PairCount="{Binding CurrentPairCount, Mode=OneWay}" />
         </ScrollViewer>
 
-        <Grid Grid.Row="2" Panel.ZIndex="2" Visibility="{Binding ShowScores, Mode=OneWay, Converter={StaticResource BoolToVis}}" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Background="AliceBlue">
-                <TextBlock HorizontalAlignment="Center" Width="80" Margin="10 10 0 1" FontSize="15" Text="IME"/>
-                <TextBlock HorizontalAlignment="Center" Width="80" Margin="10 10 0 1" FontSize="15" Text="VRIJEME"/>
-                <TextBlock HorizontalAlignment="Center" Width="80" Margin="10 5 0 1" FontSize="15" Text="OTVORENI PAROVI" TextWrapping="Wrap"/>
-            </StackPanel>
-            <ItemsControl Grid.Row="1" 
-                      ItemsSource="{Binding RankList}" Background="White">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Grid.Row ="1" Orientation="Horizontal" HorizontalAlignment="Center">
-                            <TextBlock HorizontalAlignment="Center" Width="150" Margin="10 5 0 1" FontSize="18"  Text="{Binding Path=PlayerName}"/>
-                            <TextBlock HorizontalAlignment="Center" Width="50" Margin="10 5 0 1" FontSize="18"  Text="{Binding Path=Time, Converter={StaticResource TimeSpanToSecondsConverter}}"/>
-                            <TextBlock Margin="0 5 0 1" FontSize="18" Text="s"/>
-                            <TextBlock HorizontalAlignment="Center" Width="80" Margin="30 5 0 1" FontSize="18"  Text="{Binding Path=NumberOfPairsOpened}"/>
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+        <Grid Grid.Row="2" Panel.ZIndex="2" HorizontalAlignment="Center" Background="White"
+              Visibility="{Binding ShowScores, Mode=OneWay, Converter={StaticResource BoolToVis}}" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" HorizontalAlignment="Center" Margin="0 10 0 0" FontSize="15" FontWeight="Bold"  Text="RANG"/>
+            <TextBlock Grid.Column="1" HorizontalAlignment="Center" Margin="0 10 0 0" FontSize="15" FontWeight="Bold" Text="IME"/>
+            <TextBlock Grid.Column="2" HorizontalAlignment="Center" Margin="0 10 0 0" FontSize="15" FontWeight="Bold" Text="VRIJEME (s)"/>
+            <TextBlock Grid.Column="3" HorizontalAlignment="Center" FontSize="15" FontWeight="Bold" Text="OTVORENI PAROVI" TextWrapping="Wrap"/>
         </Grid>
+        <ItemsControl Grid.Row="3" Panel.ZIndex="2" HorizontalAlignment="Center"
+                      ItemsSource="{Binding RankList}" Background="White"
+                      Visibility="{Binding ShowScores, Mode=OneWay, Converter={StaticResource BoolToVis}}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0"  HorizontalAlignment="Center" FontSize="18"  Text="{Binding Path=Rank}"/>
+                        <TextBlock Grid.Column="1"  HorizontalAlignment="Center" FontSize="18"  Text="{Binding Path=PlayerName}"/>
+                        <TextBlock Grid.Column="2"  HorizontalAlignment="Center" FontSize="18"  Text="{Binding Path=Time, Converter={StaticResource TimeSpanToSecondsConverter}}"/>
+                        <TextBlock Grid.Column="3"  HorizontalAlignment="Center" FontSize="18"  Text="{Binding Path=NumberOfPairsOpened}"/>
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
     </Grid>
 </Window>

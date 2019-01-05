@@ -19,6 +19,7 @@ namespace MemoryWPF.DataHelpers
                 {
                     string[] parts = line.Split(',');
                     list.Add( new GameData (parts[0], TimeSpan.Parse(parts[1]), int.Parse(parts[2])) );
+                    list[list.Count - 1].Rank = list.Count;
                 }
                 file.Close();
             }

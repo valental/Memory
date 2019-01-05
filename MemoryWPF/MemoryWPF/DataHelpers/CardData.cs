@@ -262,7 +262,7 @@ namespace MemoryWPF.DataHelpers
                 path + theme + "cities_moscow.png",
                 path + theme + "cities_newyork.png",
                 path + theme + "cities_paris.jpg",
-                path + theme + "cities_riodejanareo.png",
+                path + theme + "cities_riodejanero.png",
                 path + theme + "cities_rome.png",
                 path + theme + "cities_sanfrancisco.png",
                 path + theme + "cities_sydney.png",

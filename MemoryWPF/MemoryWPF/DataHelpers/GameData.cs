@@ -8,12 +8,14 @@ namespace MemoryWPF.DataHelpers
         public string PlayerName { get; set; }
         public TimeSpan Time { get; set; }
         public int NumberOfPairsOpened { get; set; }
+        public int Rank { get; set; }
 
         public GameData(string name, TimeSpan t, int number)
         {
             PlayerName = name;
             Time = t;
             NumberOfPairsOpened = number;
+            Rank = 0;
         }
     }
 }
