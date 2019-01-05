@@ -132,6 +132,8 @@ namespace MemoryWPF.ViewModels
 
         private void StartTheGame()
         {
+            if (ShowScores)
+                ShowScores = false;
             CurrentTheme = SelectedTheme;
             CurrentPairCount = 0;
             CurrentPairCount = SelectedPairCount;
