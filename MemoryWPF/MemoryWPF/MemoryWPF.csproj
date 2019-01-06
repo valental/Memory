@@ -175,7 +175,7 @@
     <Resource Include="Resources\Cities\cities_moscow.png" />
     <Resource Include="Resources\Cities\cities_newyork.png" />
     <Resource Include="Resources\Cities\cities_paris.jpg" />
-    <Resource Include="Resources\Cities\cities_riodejanero.png" />
+    <Resource Include="Resources\Cities\cities_riodejaneiro.png" />
     <Resource Include="Resources\Cities\cities_rome.png" />
     <Resource Include="Resources\Cities\cities_sanfrancisco.png" />
     <Resource Include="Resources\Cities\cities_sydney.png" />
