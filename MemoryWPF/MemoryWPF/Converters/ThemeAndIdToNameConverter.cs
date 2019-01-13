@@ -13,6 +13,7 @@ namespace MemoryWPF.Converters
         {
             Theme theme = Theme.WildAnimals;
             int id = 0;
+            Language language = Language.English;
             if (values[0] != DependencyProperty.UnsetValue)
             {
                 theme = (Theme)values[0];
@@ -21,7 +22,10 @@ namespace MemoryWPF.Converters
             {
                 id = (int)values[1];
             }
-            Enum.TryParse(Properties.Settings.Default.Language, out Language language);
+            if (values[2] != DependencyProperty.UnsetValue)
+            {
+                language = (Language)values[2];
+            }
             return language == Language.English ? CardData.ThemeCardNamesEnglish[theme][id] : CardData.ThemeCardNamesCroatian[theme][id];
         }
 

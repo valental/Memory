@@ -77,7 +77,16 @@ namespace MemoryWPF.ViewModels
             get => rankList;
             set { rankList = value; OnPropertyChanged("RankList"); }
         }
-
+        
+        public Language Language
+        {
+            get => UserSettings.Language;
+            set
+            {
+                UserSettings.Language = value;
+                OnPropertyChanged("Language");
+            }
+        }
         #endregion
 
         #region Commands
@@ -114,8 +123,7 @@ namespace MemoryWPF.ViewModels
         private static ObservableCollection<int> SetPairCounts(Theme theme)
         {
             ObservableCollection<int> counts = new ObservableCollection<int>();
-            Enum.TryParse(Properties.Settings.Default.Language, out Language language);
-            int max = language == Language.English ? CardData.ThemeCardNamesEnglish[theme].Count : CardData.ThemeCardNamesCroatian[theme].Count;
+            int max = UserSettings.Language == Language.English ? CardData.ThemeCardNamesEnglish[theme].Count : CardData.ThemeCardNamesCroatian[theme].Count;
             for (int i = 2; i <= max; i++)
             {
                 counts.Add(i);

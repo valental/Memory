@@ -80,6 +80,7 @@
     <Compile Include="DataHelpers\GameData.cs" />
     <Compile Include="DataHelpers\ScoresManager.cs" />
     <Compile Include="RelayCommand.cs" />
+    <Compile Include="UserSettings.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />

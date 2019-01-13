@@ -57,6 +57,8 @@ namespace MemoryWPF.Controls
         private void DisplayCards()
         {
             pairsMatched = 0;
+            firstOpened = null;
+            secondOpened = null;
             cardRows = (int)Math.Ceiling((double)(2 * PairCount) / (double)cardsInRow);
             cardCols = 2 * PairCount < cardsInRow ? 2 * PairCount : cardsInRow;
 
