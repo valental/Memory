@@ -26,13 +26,6 @@ namespace MemoryWPF.ViewModels
             set { showScores = value; OnPropertyChanged("ShowScores"); }
         }
 
-        private string btnText = "Show scores!";
-        public string BtnText
-        {
-            get => btnText;
-            set { btnText = value; OnPropertyChanged("BtnText"); }
-        }
-
         public IEnumerable Themes => Enum.GetValues(typeof(Theme)).Cast<Theme>();
 
         private Theme selectedTheme = Theme.WildAnimals;
@@ -132,16 +125,11 @@ namespace MemoryWPF.ViewModels
 
         private void StartTheGame()
         {
-            if (ShowScores)
-            {
-                ShowScores = false;
-                BtnText = "Show scores!";
-            }
-
+            ShowScores = false;
             CurrentTheme = SelectedTheme;
             CurrentPairCount = 0;
             CurrentPairCount = SelectedPairCount;
-            CurrentGameData.Game = new GameData(PlayerName, TimeSpan.Zero, 0);
+            CurrentGameData.Game = new GameData(PlayerName, TimeSpan.Zero);
             CurrentGameData.StartTime = DateTime.Now;
         }
 
@@ -151,18 +139,9 @@ namespace MemoryWPF.ViewModels
             RankList = new ObservableCollection<GameData>(ScoresManager.GetRankList(SelectedTheme, SelectedPairCount));
             if(RankList.Count < 10)
             {
-                int count = RankList.Count;
-                for(int i = 0; i < 10-count; i++)
-                {
-                    RankList.Add(new GameData("-",TimeSpan.Zero,0));
-                    RankList[RankList.Count - 1].Rank = RankList.Count;
-                }
+                for(int i = RankList.Count; i <= 10; i++)
+                    RankList.Add(new GameData("-",TimeSpan.Zero,0, i));   
             }
-
-            if (BtnText == "Show scores!")
-                BtnText = "Hide scores!";
-            else
-                BtnText = "Show scores!";
         }
 
         #endregion

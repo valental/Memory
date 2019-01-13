@@ -4,13 +4,11 @@ using System.Windows.Data;
 
 namespace MemoryWPF.Converters
 {
-    class ZeroToDashConverter: IValueConverter
+    class BoolToBtnTxtConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            int cardNumber = (int)value;
-
-            return cardNumber == 0 ? "-" : cardNumber.ToString();
+            return (bool)value ? "Hide scores!" : "Show scores!";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

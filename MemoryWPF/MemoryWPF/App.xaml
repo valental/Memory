@@ -13,5 +13,6 @@
         <converters:ThemeAndIdToImageConverter x:Key="ThemeAndIdToImageConverter"/>
         <converters:TimeSpanToSecondsConverter x:Key="TimeSpanToSecondsConverter"/>
         <converters:ZeroToDashConverter x:Key="ZeroToDashConverter"/>
+        <converters:BoolToBtnTxtConverter x:Key="BoolToBtnTxtConverter"/>
     </Application.Resources>
 </Application>

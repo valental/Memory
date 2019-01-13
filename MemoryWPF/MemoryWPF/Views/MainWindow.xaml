@@ -14,6 +14,20 @@
         <vm:MainWindowViewModel/>
     </Window.DataContext>
 
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="TableHeader">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="TableCell">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -31,9 +45,9 @@
             <Label>Number of pairs:</Label>
             <ComboBox VerticalAlignment="Center" Margin="0 0 10 0" Width="50" ItemsSource="{Binding PairCounts, Mode=TwoWay}"
                       SelectedItem="{Binding SelectedPairCount, Mode=TwoWay}"/>
-            <Button Content="Start!" Width="70" Height="21" Margin="20 0 0 0"
+            <Button Content="Start!" Width="70" Height="20" Margin="20 0 0 0"
                     Command="{Binding StartCommand}"/>
-            <Button Content="{Binding BtnText, Mode=TwoWay}" Width="80" Height="21" Margin="20 0 0 0"
+            <Button Content="{Binding ShowScores, Mode=TwoWay, Converter={StaticResource BoolToBtnTxtConverter}}" Width="80" Height="20" Margin="20 0 0 0"
                     Command="{Binding ScoreCommand}"/>
         </StackPanel>
 
@@ -50,17 +64,16 @@
                 <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="100"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" HorizontalAlignment="Center" Margin="0 10 0 0" FontSize="15" FontWeight="Bold"  Text="RANG"/>
-            <TextBlock Grid.Column="1" HorizontalAlignment="Center" Margin="0 10 0 0" FontSize="15" FontWeight="Bold" Text="IME"/>
-            <TextBlock Grid.Column="2" HorizontalAlignment="Center" Margin="0 10 0 0" FontSize="15" FontWeight="Bold" Text="VRIJEME (s)"/>
-            <TextBlock Grid.Column="3" HorizontalAlignment="Center" FontSize="15" FontWeight="Bold" Text="OTVORENI PAROVI" TextWrapping="Wrap"/>
+            <TextBlock Grid.Column="0" Style="{StaticResource TableHeader}"  Text="RANG"/>
+            <TextBlock Grid.Column="1" Style="{StaticResource TableHeader}" Text="IME"/>
+            <TextBlock Grid.Column="2" Style="{StaticResource TableHeader}" Text="VRIJEME (s)"/>
+            <TextBlock Grid.Column="3" Style="{StaticResource TableHeader}" Text="OTVORENI PAROVI" TextWrapping="Wrap"/>
         </Grid>
-        <ItemsControl Grid.Row="3" Panel.ZIndex="2" HorizontalAlignment="Center" Margin="0 0 0 20"
+        <ItemsControl Grid.Row="3" Panel.ZIndex="2" HorizontalAlignment="Center"
                       ItemsSource="{Binding RankList}" 
                       Visibility="{Binding ShowScores, Mode=OneWay, Converter={StaticResource BoolToVis}}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Border BorderBrush="LightBlue" BorderThickness="1">
                     <Grid Background="DarkSeaGreen">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="80"/>
@@ -68,12 +81,11 @@
                             <ColumnDefinition Width="150"/>
                             <ColumnDefinition Width="100"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" HorizontalAlignment="Center" FontSize="18" Text="{Binding Path=Rank}"/>
-                        <TextBlock Grid.Column="1" HorizontalAlignment="Center" FontSize="18" Text="{Binding Path=PlayerName}"/>
-                        <TextBlock Grid.Column="2" HorizontalAlignment="Center" FontSize="18" Text="{Binding Path=Time, Converter={StaticResource TimeSpanToSecondsConverter}}"/>
-                        <TextBlock Grid.Column="3" HorizontalAlignment="Center" FontSize="18" Text="{Binding Path=NumberOfPairsOpened, Converter={StaticResource ZeroToDashConverter}}"/>
+                        <TextBlock Grid.Column="0" Style="{StaticResource TableCell}" Text="{Binding Path=Rank}"/>
+                        <TextBlock Grid.Column="1" Style="{StaticResource TableCell}" Text="{Binding Path=PlayerName}"/>
+                        <TextBlock Grid.Column="2" Style="{StaticResource TableCell}" Text="{Binding Path=Time, Converter={StaticResource TimeSpanToSecondsConverter}}"/>
+                        <TextBlock Grid.Column="3" Style="{StaticResource TableCell}" Text="{Binding Path=NumberOfPairsOpened, Converter={StaticResource ZeroToDashConverter}}"/>
                     </Grid>
-                    </Border>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
