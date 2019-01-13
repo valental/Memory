@@ -31,9 +31,9 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10 10 10 0">
@@ -51,43 +51,45 @@
                     Command="{Binding ScoreCommand}"/>
         </StackPanel>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="3" >
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="1" Grid.RowSpan="3">
             <controls:CardDeck Theme="{Binding CurrentTheme, Mode=OneWay}" 
                                PairCount="{Binding CurrentPairCount, Mode=OneWay}" />
         </ScrollViewer>
 
-        <Grid Grid.Row="2" Panel.ZIndex="2" HorizontalAlignment="Center" Background="SeaGreen"
+        <StackPanel Grid.Row="2">
+            <Grid Panel.ZIndex="2" HorizontalAlignment="Center" Background="SeaGreen"
               Visibility="{Binding ShowScores, Mode=OneWay, Converter={StaticResource BoolToVis}}" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="80"/>
-                <ColumnDefinition Width="200"/>
-                <ColumnDefinition Width="150"/>
-                <ColumnDefinition Width="100"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Column="0" Style="{StaticResource TableHeader}"  Text="RANG"/>
-            <TextBlock Grid.Column="1" Style="{StaticResource TableHeader}" Text="IME"/>
-            <TextBlock Grid.Column="2" Style="{StaticResource TableHeader}" Text="VRIJEME (s)"/>
-            <TextBlock Grid.Column="3" Style="{StaticResource TableHeader}" Text="OTVORENI PAROVI" TextWrapping="Wrap"/>
-        </Grid>
-        <ItemsControl Grid.Row="3" Panel.ZIndex="2" HorizontalAlignment="Center"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Style="{StaticResource TableHeader}" Text="RANG"/>
+                <TextBlock Grid.Column="1" Style="{StaticResource TableHeader}" Text="IME"/>
+                <TextBlock Grid.Column="2" Style="{StaticResource TableHeader}" Text="VRIJEME (s)"/>
+                <TextBlock Grid.Column="3" Style="{StaticResource TableHeader}" Text="OTVORENI PAROVI" TextWrapping="Wrap" TextAlignment="Center"/>
+            </Grid>
+            <ItemsControl Panel.ZIndex="2" HorizontalAlignment="Center" Background="White"
                       ItemsSource="{Binding RankList}" 
                       Visibility="{Binding ShowScores, Mode=OneWay, Converter={StaticResource BoolToVis}}">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Grid Background="DarkSeaGreen">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="80"/>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition Width="100"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Style="{StaticResource TableCell}" Text="{Binding Path=Rank}"/>
-                        <TextBlock Grid.Column="1" Style="{StaticResource TableCell}" Text="{Binding Path=PlayerName}"/>
-                        <TextBlock Grid.Column="2" Style="{StaticResource TableCell}" Text="{Binding Path=Time, Converter={StaticResource TimeSpanToSecondsConverter}}"/>
-                        <TextBlock Grid.Column="3" Style="{StaticResource TableCell}" Text="{Binding Path=NumberOfPairsOpened, Converter={StaticResource ZeroToDashConverter}}"/>
-                    </Grid>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Background="DarkSeaGreen">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="80"/>
+                                <ColumnDefinition Width="200"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="100"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Style="{StaticResource TableCell}" Text="{Binding Path=Rank}"/>
+                            <TextBlock Grid.Column="1" Style="{StaticResource TableCell}" Text="{Binding Path=PlayerName}"/>
+                            <TextBlock Grid.Column="2" Style="{StaticResource TableCell}" Text="{Binding Path=Time, Converter={StaticResource TimeSpanToSecondsConverter}}"/>
+                            <TextBlock Grid.Column="3" Style="{StaticResource TableCell}" Text="{Binding Path=NumberOfPairsOpened, Converter={StaticResource ZeroToDashConverter}}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
     </Grid>
 </Window>
