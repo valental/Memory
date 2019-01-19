@@ -6,7 +6,7 @@ using MemoryWPF.DataHelpers;
 
 namespace MemoryWPF.Converters
 {
-    class ThemeToStringConverter : IValueConverter
+    public class ThemeToStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

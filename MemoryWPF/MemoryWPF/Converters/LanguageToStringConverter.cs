@@ -6,17 +6,14 @@ using MemoryWPF.DataHelpers;
 
 namespace MemoryWPF.Converters
 {
-    public class BoolToBtnTxtConverter : IMultiValueConverter
+    public class LanguageToStringConverter : IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             Language language = (Language)values[0];
-            bool showScores = (bool)values[1];
+            int id = (int)values[1];
 
-            if (language == Language.English)
-                return showScores ? "Hide scores!" : "Show scores!";
-            else
-                return showScores ? "Sakrij rezultate!" : "Pokaži rezultate!";
+            return language == Language.English ? CardData.ExpressionsEnglish[id] : CardData.ExpressionsCroatian[id];
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)

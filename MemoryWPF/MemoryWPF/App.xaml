@@ -14,5 +14,6 @@
         <converters:TimeSpanToSecondsConverter x:Key="TimeSpanToSecondsConverter"/>
         <converters:ZeroToDashConverter x:Key="ZeroToDashConverter"/>
         <converters:BoolToBtnTxtConverter x:Key="BoolToBtnTxtConverter"/>
+        <converters:LanguageToStringConverter x:Key="LanguageToStringConverter"/>
     </Application.Resources>
 </Application>

@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:MemoryWPF"
         xmlns:vm="clr-namespace:MemoryWPF.ViewModels"
         xmlns:controls="clr-namespace:MemoryWPF.Controls"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="Memory" 
         WindowStartupLocation="CenterScreen"
@@ -26,6 +27,16 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="18"/>
         </Style>
+
+        <sys:Int32 x:Key="NameLabel">0</sys:Int32>
+        <sys:Int32 x:Key="ThemeLabel">1</sys:Int32>
+        <sys:Int32 x:Key="NumberOfPairsLabel">2</sys:Int32>
+        <sys:Int32 x:Key="StartButton">3</sys:Int32>
+        <sys:Int32 x:Key="ChangeLanguageButton">4</sys:Int32>
+        <sys:Int32 x:Key="TableHeaderRank">5</sys:Int32>
+        <sys:Int32 x:Key="TableHeaderName">6</sys:Int32>
+        <sys:Int32 x:Key="TableHeaderTime">7</sys:Int32>
+        <sys:Int32 x:Key="TableHeaderPairsOpened">8</sys:Int32>
     </Window.Resources>
 
     <Grid>
@@ -36,20 +47,78 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="10 10 10 0">
-            <Label>Name:</Label>
-            <TextBox Text="{Binding Path=PlayerName, Mode=TwoWay}" VerticalAlignment="Center" Margin="0,0,10,0" Width="120"/>
-            <Label>Theme:</Label>
-            <ComboBox VerticalAlignment="Center" Margin="0 0 10 0" Width="100" ItemsSource="{Binding Themes, Mode=OneWay}" 
+        <Grid Grid.Row="0" Margin="10 10 10 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="45"/>  <!-- 0. Name: -->
+                <ColumnDefinition Width="100"/> <!-- 1. Guest -->
+                <ColumnDefinition Width="10"/> <!-- 2. razmak -->
+                <ColumnDefinition Width="50"/> <!-- 3. Theme: -->
+                <ColumnDefinition Width="110"/> <!-- 4. Combo Theme -->
+                <ColumnDefinition Width="10"/> <!-- 5. razmak -->
+                <ColumnDefinition Width="100"/> <!-- 6. Number of pairs: -->
+                <ColumnDefinition Width="Auto"/> <!-- 7. Combo pairs -->
+                <ColumnDefinition Width="15"/> <!-- 8. razmak -->
+                <ColumnDefinition Width="50"/> <!-- 9. Start button-->
+                <ColumnDefinition Width="15"/> <!-- 10. razmak -->
+                <ColumnDefinition Width="100"/> <!-- 11. Show scores button -->
+                <ColumnDefinition Width="15"/> <!-- 12. razmak -->
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="130"/> <!-- 13. Change language button -->
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" HorizontalAlignment="Right">
+                <Label.Content>
+                    <MultiBinding Converter="{StaticResource LanguageToStringConverter}">
+                        <Binding Path="Language"/>
+                        <Binding Source="{StaticResource NameLabel}"/>
+                    </MultiBinding>
+                </Label.Content>
+            </Label>
+            <TextBox Grid.Column="1" VerticalAlignment="Center" Text="{Binding Path=PlayerName, Mode=TwoWay}"/>
+            <Label Grid.Column="3" HorizontalAlignment="Right">
+                <Label.Content>
+                    <MultiBinding Converter="{StaticResource LanguageToStringConverter}">
+                        <Binding Path="Language"/>
+                        <Binding Source="{StaticResource ThemeLabel}"/>
+                    </MultiBinding>
+                </Label.Content>
+            </Label>
+            <ComboBox Grid.Column="4" VerticalAlignment="Center" ItemsSource="{Binding Themes, Mode=OneWay}" 
                       SelectedItem="{Binding SelectedTheme, Mode=TwoWay}"/>
-            <Label>Number of pairs:</Label>
-            <ComboBox VerticalAlignment="Center" Margin="0 0 10 0" Width="50" ItemsSource="{Binding PairCounts, Mode=TwoWay}"
+            <Label Grid.Column="6" HorizontalAlignment="Right">
+                <Label.Content>
+                    <MultiBinding Converter="{StaticResource LanguageToStringConverter}">
+                        <Binding Path="Language"/>
+                        <Binding Source="{StaticResource NumberOfPairsLabel}"/>
+                    </MultiBinding>
+                </Label.Content>
+            </Label>
+            <ComboBox Grid.Column="7" VerticalAlignment="Center" ItemsSource="{Binding PairCounts, Mode=TwoWay}"
                       SelectedItem="{Binding SelectedPairCount, Mode=TwoWay}"/>
-            <Button Content="Start!" Width="70" Height="20" Margin="20 0 0 0"
-                    Command="{Binding StartCommand}"/>
-            <Button Content="{Binding ShowScores, Mode=TwoWay, Converter={StaticResource BoolToBtnTxtConverter}}" Width="80" Height="20" Margin="20 0 0 0"
-                    Command="{Binding ScoreCommand}"/>
-        </StackPanel>
+            <Button Grid.Column="9" Height="22" Command="{Binding StartCommand}">
+                <Button.Content>
+                    <MultiBinding Converter="{StaticResource LanguageToStringConverter}">
+                        <Binding Path="Language"/>
+                        <Binding Source="{StaticResource StartButton}"/>
+                    </MultiBinding>
+                </Button.Content>
+            </Button>
+            <Button Grid.Column="11" Height="22" Command="{Binding ScoreCommand}">
+                <Button.Content>
+                    <MultiBinding Converter="{StaticResource BoolToBtnTxtConverter}">
+                        <Binding Path="Language"/>
+                        <Binding Path="ShowScores"/>
+                    </MultiBinding>
+                </Button.Content>
+            </Button>
+            <Button Grid.Column="14" Height="22" Command="{Binding LanguageCommand}">
+                <Button.Content>
+                    <MultiBinding Converter="{StaticResource LanguageToStringConverter}">
+                        <Binding Path="Language"/>
+                        <Binding Source="{StaticResource ChangeLanguageButton}"/>
+                    </MultiBinding>
+                </Button.Content>
+            </Button>
+        </Grid>
 
         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="1" Grid.RowSpan="3">
             <controls:CardDeck Theme="{Binding CurrentTheme, Mode=OneWay}" 
@@ -65,10 +134,38 @@
                     <ColumnDefinition Width="150"/>
                     <ColumnDefinition Width="100"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Column="0" Style="{StaticResource TableHeader}" Text="RANG"/>
-                <TextBlock Grid.Column="1" Style="{StaticResource TableHeader}" Text="IME"/>
-                <TextBlock Grid.Column="2" Style="{StaticResource TableHeader}" Text="VRIJEME (s)"/>
-                <TextBlock Grid.Column="3" Style="{StaticResource TableHeader}" Text="OTVORENI PAROVI" TextWrapping="Wrap" TextAlignment="Center"/>
+                <TextBlock Grid.Column="0" Style="{StaticResource TableHeader}">
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{StaticResource LanguageToStringConverter}">
+                            <Binding Path="Language"/>
+                            <Binding Source="{StaticResource TableHeaderRank}"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+                <TextBlock Grid.Column="1" Style="{StaticResource TableHeader}">
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{StaticResource LanguageToStringConverter}">
+                            <Binding Path="Language"/>
+                            <Binding Source="{StaticResource TableHeaderName}"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+                <TextBlock Grid.Column="2" Style="{StaticResource TableHeader}">
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{StaticResource LanguageToStringConverter}">
+                            <Binding Path="Language"/>
+                            <Binding Source="{StaticResource TableHeaderTime}"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+                <TextBlock Grid.Column="3" Style="{StaticResource TableHeader}" TextWrapping="Wrap" TextAlignment="Center">
+                    <TextBlock.Text>
+                        <MultiBinding Converter="{StaticResource LanguageToStringConverter}">
+                            <Binding Path="Language"/>
+                            <Binding Source="{StaticResource TableHeaderPairsOpened}"/>
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
             </Grid>
             <ItemsControl Panel.ZIndex="2" HorizontalAlignment="Center" Background="White"
                       ItemsSource="{Binding RankList}" 

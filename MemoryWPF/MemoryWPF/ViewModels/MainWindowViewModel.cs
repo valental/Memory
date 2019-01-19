@@ -111,6 +111,17 @@ namespace MemoryWPF.ViewModels
                 return scoreCommand;
             }
         }
+
+        private RelayCommand languageCommand;
+        public ICommand LanguageCommand
+        {
+            get
+            {
+                if (languageCommand == null)
+                    languageCommand = new RelayCommand(ChangeLanguage);
+                return languageCommand;
+            }
+        }
         #endregion
 
         #region Constructor
@@ -150,6 +161,11 @@ namespace MemoryWPF.ViewModels
                 for(int i = RankList.Count; i <= 10; i++)
                     RankList.Add(new GameData("-",TimeSpan.Zero,0, i));   
             }
+        }
+
+        private void ChangeLanguage()
+        {
+            Language = Language == Language.English ? Language.Croatian : Language.English;
         }
 
         #endregion

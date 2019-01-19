@@ -5,7 +5,7 @@ using System.Windows.Data;
 
 namespace MemoryWPF.Converters
 {
-    class TimeSpanToSecondsConverter: IValueConverter
+    public class TimeSpanToSecondsConverter: IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

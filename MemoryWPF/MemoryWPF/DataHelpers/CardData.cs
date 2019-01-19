@@ -21,15 +21,43 @@ namespace MemoryWPF.DataHelpers
 
     public static class CardData
     {
-        public readonly static Dictionary<Theme, SolidColorBrush> ThemeColors = new Dictionary<Theme, SolidColorBrush>();
-        public readonly static Dictionary<Theme, List<string>> ThemeCardNamesEnglish = new Dictionary<Theme, List<string>>();
-        public readonly static Dictionary<Theme, List<string>> ThemeCardNamesCroatian = new Dictionary<Theme, List<string>>();
-        public readonly static Dictionary<Theme, List<string>> ThemeCardImages = new Dictionary<Theme, List<string>>();
+        public static Dictionary<Theme, SolidColorBrush> ThemeColors { get; } = new Dictionary<Theme, SolidColorBrush>();
+        public static Dictionary<Theme, List<string>> ThemeCardImages { get; } = new Dictionary<Theme, List<string>>();
+
+        public static Dictionary<Theme, List<string>> ThemeCardNamesEnglish { get;  } = new Dictionary<Theme, List<string>>();
+        public static Dictionary<Theme, List<string>> ThemeCardNamesCroatian { get; } = new Dictionary<Theme, List<string>>();
+
+        public static Dictionary<int, string> ExpressionsEnglish { get; } = new Dictionary<int, string>();
+        public static Dictionary<int, string> ExpressionsCroatian { get; } = new Dictionary<int, string>();
 
         static CardData()
         {
             const string path = "Resources/";
             string theme;
+
+            #region ExpressionsEnglish
+            ExpressionsEnglish[0] = "Name:";
+            ExpressionsEnglish[1] = "Theme:";
+            ExpressionsEnglish[2] = "Number of pairs:";
+            ExpressionsEnglish[3] = "Start!";
+            ExpressionsEnglish[4] = "Change language!";
+            ExpressionsEnglish[5] = "RANK";
+            ExpressionsEnglish[6] = "NAME";
+            ExpressionsEnglish[7] = "TIME (s)";
+            ExpressionsEnglish[8] = "PAIRS OPENED";
+            #endregion
+
+            #region ExpressionsCroatian
+            ExpressionsCroatian[0] = "Ime:";
+            ExpressionsCroatian[1] = "Tema:";
+            ExpressionsCroatian[2] = "Broj parova:";
+            ExpressionsCroatian[3] = "Kreni!";
+            ExpressionsCroatian[4] = "Promijeni jezik!";
+            ExpressionsCroatian[5] = "RANG";
+            ExpressionsCroatian[6] = "IME";
+            ExpressionsCroatian[7] = "VRIJEME (s)";
+            ExpressionsCroatian[8] = "OTVORENI PAROVI";
+            #endregion
 
             #region Colors
             ThemeColors[Theme.WildAnimals] = Brushes.Red;
