@@ -26,16 +26,17 @@ namespace MemoryWPF.ViewModels
             set { showScores = value; OnPropertyChanged("ShowScores"); }
         }
 
-        public IEnumerable Themes => Enum.GetValues(typeof(Theme)).Cast<Theme>();
+        private ObservableCollection<ThemeObject> themes = new ObservableCollection<ThemeObject>();
+        public ObservableCollection<ThemeObject> Themes => themes;
 
-        private Theme selectedTheme = Theme.WildAnimals;
-        public Theme SelectedTheme
+        private ThemeObject selectedTheme;
+        public ThemeObject SelectedTheme
         {
             get => selectedTheme;
             set
             {
                 selectedTheme = value;
-                PairCounts = SetPairCounts(selectedTheme);
+                PairCounts = SetPairCounts(selectedTheme.Theme);
                 SelectedPairCount = 2;
                 OnPropertyChanged("SelectedTheme");
             }
@@ -127,6 +128,9 @@ namespace MemoryWPF.ViewModels
         #region Constructor
         public MainWindowViewModel()
         {
+            foreach (var theme in Enum.GetValues(typeof(Theme)).Cast<Theme>())
+                Themes.Add(new ThemeObject(theme));
+            SelectedTheme = Themes.First();
         }
         #endregion
 
@@ -145,7 +149,7 @@ namespace MemoryWPF.ViewModels
         private void StartTheGame()
         {
             ShowScores = false;
-            CurrentTheme = SelectedTheme;
+            CurrentTheme = SelectedTheme.Theme;
             CurrentPairCount = 0;
             CurrentPairCount = SelectedPairCount;
             CurrentGameData.Game = new GameData(PlayerName, TimeSpan.Zero);
@@ -155,7 +159,7 @@ namespace MemoryWPF.ViewModels
         private void ShowHighscores()
         {
             ShowScores = !ShowScores;
-            RankList = new ObservableCollection<GameData>(ScoresManager.GetRankList(SelectedTheme, SelectedPairCount));
+            RankList = new ObservableCollection<GameData>(ScoresManager.GetRankList(SelectedTheme.Theme, SelectedPairCount));
             if(RankList.Count < 10)
             {
                 for(int i = RankList.Count; i <= 10; i++)

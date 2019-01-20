@@ -80,8 +80,10 @@
     <Compile Include="Converters\ZeroToDashConverter.cs" />
     <Compile Include="DataHelpers\CardData.cs" />
     <Compile Include="DataHelpers\CurrentGameData.cs" />
+    <Compile Include="DataHelpers\DataObjectBase.cs" />
     <Compile Include="DataHelpers\GameData.cs" />
     <Compile Include="DataHelpers\ScoresManager.cs" />
+    <Compile Include="DataHelpers\ThemeObject.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="UserSettings.cs" />
     <Compile Include="Utility.cs" />
