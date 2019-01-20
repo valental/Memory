@@ -17,5 +17,6 @@
         <converters:LanguageToStringConverter x:Key="LanguageToStringConverter"/>
         <converters:LanguageToFlagConverter x:Key="LanguageToFlagConverter"/>
         <converters:LanguageToMessageConverter x:Key="LanguageToMessageConverter"/>
+        <converters:ThemeToVisibilityConverter x:Key="ThemeToVisibilityConverter"/>
     </Application.Resources>
 </Application>

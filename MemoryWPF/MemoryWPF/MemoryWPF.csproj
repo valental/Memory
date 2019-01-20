@@ -76,6 +76,7 @@
     <Compile Include="Converters\ThemeAndIdToNameConverter.cs" />
     <Compile Include="Converters\ThemeToColorConverter.cs" />
     <Compile Include="Converters\ThemeToStringConverter.cs" />
+    <Compile Include="Converters\ThemeToVisibilityConverter.cs" />
     <Compile Include="Converters\TimeSpanToSecondsConverter.cs" />
     <Compile Include="Converters\ZeroToDashConverter.cs" />
     <Compile Include="DataHelpers\CardData.cs" />
@@ -142,7 +143,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="RankingData\" />
-    <Folder Include="Resources\Math\" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="brain_icon.ico" />
@@ -252,6 +252,20 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\UK_Flag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Math\math_absolute.png" />
+    <Resource Include="Resources\Math\math_cosine.png" />
+    <Resource Include="Resources\Math\math_cotangent.png" />
+    <Resource Include="Resources\Math\math_cubed.png" />
+    <Resource Include="Resources\Math\math_exponential.png" />
+    <Resource Include="Resources\Math\math_identity.png" />
+    <Resource Include="Resources\Math\math_naturallogarithm.png" />
+    <Resource Include="Resources\Math\math_reciprocal.png" />
+    <Resource Include="Resources\Math\math_sine.png" />
+    <Resource Include="Resources\Math\math_squared.png" />
+    <Resource Include="Resources\Math\math_squareroot.png" />
+    <Resource Include="Resources\Math\math_tangent.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -473,24 +473,54 @@ namespace MemoryWPF.DataHelpers
             theme = "Math/";
             ThemeCardNamesEnglish[Theme.Math] = new List<string>()
             {
-                "Sinus",
-                "Cosinus",
+                "Absolute",
+                "Cosine",
+                "Cotangent",
+                "Cubed function",
+                "Exponential",
+                "Identity",
+                "Natural logarithm",
+                "Reciprocal",
+                "Sine",
+                "Squared function",
+                "Square root",
+                "Tangent",
                 
                 // Add new animals here and don't forget the ','
             };
 
             ThemeCardNamesCroatian[Theme.Math] = new List<string>()
             {
-                "Sinus",
-                "Kosinus",
+                "Absolute",
+                "Cosine",
+                "Cotangent",
+                "Cubed function",
+                "Exponential",
+                "Identity",
+                "Natural logarithm",
+                "Reciprocal",
+                "Sine",
+                "Squared function",
+                "Square root",
+                "Tangent",
 
                 // Add new animals here and don't forget the ','
             };
 
             ThemeCardImages[Theme.Math] = new List<string>()
             {
-                path + theme + "math_sinus.png", // this picture still has to be created and added to Resources/Math
-                path + theme + "math_cosinus.png", // this picture still has to be created and added to Resources/Math,
+                path + theme + "math_absolute.png",
+                path + theme + "math_cosine.png",
+                path + theme + "math_cotangent.png",
+                path + theme + "math_cubed.png",
+                path + theme + "math_exponential.png",
+                path + theme + "math_identity.png",
+                path + theme + "math_naturallogarithm.png",
+                path + theme + "math_reciprocal.png",
+                path + theme + "math_sine.png",
+                path + theme + "math_squared.png",
+                path + theme + "math_squareroot.png",
+                path + theme + "math_tangent.png",
 
                 // Add new animal images here and don't forget the ','
             };

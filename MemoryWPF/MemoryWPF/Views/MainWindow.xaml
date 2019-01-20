@@ -10,7 +10,8 @@
         mc:Ignorable="d"
         Title="Memory" 
         WindowStartupLocation="CenterScreen"
-        SizeToContent="WidthAndHeight">
+        SizeToContent="WidthAndHeight"
+        Background="Bisque">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
     </Window.DataContext>
