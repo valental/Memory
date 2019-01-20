@@ -11,6 +11,7 @@
         Title="Memory" 
         WindowStartupLocation="CenterScreen"
         SizeToContent="WidthAndHeight"
+        SizeChanged="Window_SizeChanged"
         Background="Bisque">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
@@ -56,7 +57,7 @@
                 <ColumnDefinition Width="110"/> <!-- 4. Combo Theme -->
                 <ColumnDefinition Width="10"/> <!-- 5. razmak -->
                 <ColumnDefinition Width="100"/> <!-- 6. Number of pairs: -->
-                <ColumnDefinition Width="Auto"/> <!-- 7. Combo pairs -->
+                <ColumnDefinition Width="40"/> <!-- 7. Combo pairs -->
                 <ColumnDefinition Width="15"/> <!-- 8. razmak -->
                 <ColumnDefinition Width="50"/> <!-- 9. Start button-->
                 <ColumnDefinition Width="15"/> <!-- 10. razmak -->
