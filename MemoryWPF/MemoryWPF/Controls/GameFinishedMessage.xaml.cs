@@ -10,6 +10,8 @@ namespace MemoryWPF.Controls
     /// </summary>
     public partial class GameFinishedMessage : Border
     {
+        private double temp = (double)CurrentGameData.Game.Time.Seconds + ((double)CurrentGameData.Game.Time.Milliseconds / 1000);
+
         #region Dependency Properties
         public static readonly DependencyProperty ThemeProperty = DependencyProperty.Register(
             "Theme", typeof(Theme), typeof(GameFinishedMessage), new PropertyMetadata(Theme.WildAnimals)
@@ -22,8 +24,10 @@ namespace MemoryWPF.Controls
             get { return (Theme)GetValue(ThemeProperty); }
             set { SetValue(ThemeProperty, value); }
         }
-        double temp = (double)CurrentGameData.Game.Time.Seconds + ((double)CurrentGameData.Game.Time.Milliseconds / 1000);
-        public string Message => "Game completed!\nTime: " + temp.ToString() + "s\nPairs opened: "
+
+        public string MessageEng => "Game completed!\nTime: " + temp.ToString() + "s\nPairs opened: "
+                                + CurrentGameData.Game.NumberOfPairsOpened;
+        public string MessageCro => "Igra završena!\nVrijeme: " + temp.ToString() + "s\nOtvoreni parovi: "
                                 + CurrentGameData.Game.NumberOfPairsOpened;
         #endregion
 

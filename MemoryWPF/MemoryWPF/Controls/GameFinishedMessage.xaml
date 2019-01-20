@@ -4,10 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:MemoryWPF.Controls"
+             Name="GFM"
              mc:Ignorable="d" 
-             DataContext="{Binding RelativeSource={RelativeSource Self}}"
              Height="80" Width="200">
-    <Grid Background="{Binding Path=Theme, Mode=OneWay, Converter={StaticResource ThemeToColorConverter}}">
+    <Grid Background="{Binding ElementName=GFM, Path=Theme, Mode=OneWay, Converter={StaticResource ThemeToColorConverter}}">
         <Grid.RowDefinitions>
             <RowDefinition Height="10"/>
             <RowDefinition Height="*"/>
@@ -18,10 +18,17 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="10"/>
         </Grid.ColumnDefinitions>
-        
-        <TextBlock Text="{Binding Path=Message, Mode=OneWay}"
-                   Grid.Row="1" Grid.Column="1" TextWrapping="Wrap"
+
+        <TextBlock Grid.Row="1" Grid.Column="1" TextWrapping="Wrap"
                    Foreground="White" FontSize="15" FontWeight="Bold"
-                   VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                   VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock.Text>
+                <MultiBinding Converter="{StaticResource LanguageToMessageConverter}">
+                    <Binding Path="Language"/>
+                    <Binding ElementName="GFM" Path="MessageEng"/>
+                    <Binding ElementName="GFM" Path="MessageCro"/>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
     </Grid>
 </Border>

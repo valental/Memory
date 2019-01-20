@@ -70,6 +70,7 @@
     <Compile Include="Converters\BoolToBtnTxtConverter.cs" />
     <Compile Include="Converters\InvertBoolToVisibilityConverter.cs" />
     <Compile Include="Converters\LanguageToFlagConverter.cs" />
+    <Compile Include="Converters\LanguageToMessageConverter.cs" />
     <Compile Include="Converters\LanguageToStringConverter.cs" />
     <Compile Include="Converters\ThemeAndIdToImageConverter.cs" />
     <Compile Include="Converters\ThemeAndIdToNameConverter.cs" />

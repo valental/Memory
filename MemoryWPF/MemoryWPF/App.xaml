@@ -16,5 +16,6 @@
         <converters:BoolToBtnTxtConverter x:Key="BoolToBtnTxtConverter"/>
         <converters:LanguageToStringConverter x:Key="LanguageToStringConverter"/>
         <converters:LanguageToFlagConverter x:Key="LanguageToFlagConverter"/>
+        <converters:LanguageToMessageConverter x:Key="LanguageToMessageConverter"/>
     </Application.Resources>
 </Application>
