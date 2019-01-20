@@ -6,7 +6,7 @@ Multimedijski sustavi - Završni projekt
 **Opis projekta:**
 Realizirat ćemo klasičnu igru Memory. Korisnik može birati
 kategoriju igre (tematiku sličica s kojima igra igru: životinje,
-matematika,...) te veličinu igre (broj sličica s kojima igra).
+matematika,...) i veličinu igre (broj sličica s kojima igra), promijeniti jezik aplikacije (hrv/eng) te vidjeti rang listu 10 najboljih igrača određene igre. 
 
 Igru ćemo implementirati u programskom jeziku C# korištenjem WPF-a.
 
