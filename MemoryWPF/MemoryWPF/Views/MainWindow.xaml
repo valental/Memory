@@ -82,7 +82,7 @@
                 </Label.Content>
             </Label>
             <ComboBox Grid.Column="4" VerticalAlignment="Center" ItemsSource="{Binding Themes, Mode=OneWay}" 
-                      SelectedItem="{Binding SelectedTheme, Mode=TwoWay}"/>
+                      SelectedItem="{Binding SelectedTheme, Mode=TwoWay}" DisplayMemberPath="{Binding Language}"/>
             <Label Grid.Column="6" HorizontalAlignment="Right">
                 <Label.Content>
                     <MultiBinding Converter="{StaticResource LanguageToStringConverter}">
