@@ -32,11 +32,10 @@
         <sys:Int32 x:Key="ThemeLabel">1</sys:Int32>
         <sys:Int32 x:Key="NumberOfPairsLabel">2</sys:Int32>
         <sys:Int32 x:Key="StartButton">3</sys:Int32>
-        <sys:Int32 x:Key="ChangeLanguageButton">4</sys:Int32>
-        <sys:Int32 x:Key="TableHeaderRank">5</sys:Int32>
-        <sys:Int32 x:Key="TableHeaderName">6</sys:Int32>
-        <sys:Int32 x:Key="TableHeaderTime">7</sys:Int32>
-        <sys:Int32 x:Key="TableHeaderPairsOpened">8</sys:Int32>
+        <sys:Int32 x:Key="TableHeaderRank">4</sys:Int32>
+        <sys:Int32 x:Key="TableHeaderName">5</sys:Int32>
+        <sys:Int32 x:Key="TableHeaderTime">6</sys:Int32>
+        <sys:Int32 x:Key="TableHeaderPairsOpened">7</sys:Int32>
     </Window.Resources>
 
     <Grid>
@@ -63,7 +62,7 @@
                 <ColumnDefinition Width="100"/> <!-- 11. Show scores button -->
                 <ColumnDefinition Width="15"/> <!-- 12. razmak -->
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="130"/> <!-- 13. Change language button -->
+                <ColumnDefinition Width="40"/> <!-- 13. Change language button -->
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" HorizontalAlignment="Right">
                 <Label.Content>
@@ -111,12 +110,11 @@
                 </Button.Content>
             </Button>
             <Button Grid.Column="14" Height="22" Command="{Binding LanguageCommand}">
-                <Button.Content>
-                    <MultiBinding Converter="{StaticResource LanguageToStringConverter}">
-                        <Binding Path="Language"/>
-                        <Binding Source="{StaticResource ChangeLanguageButton}"/>
-                    </MultiBinding>
-                </Button.Content>
+                <Button.Template>
+                    <ControlTemplate>
+                        <Image Stretch="Fill" Source="{Binding Language, Converter={StaticResource LanguageToFlagConverter}}"/>
+                    </ControlTemplate>
+                </Button.Template>
             </Button>
         </Grid>
 

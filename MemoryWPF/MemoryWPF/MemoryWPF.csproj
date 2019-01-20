@@ -69,6 +69,7 @@
     </Compile>
     <Compile Include="Converters\BoolToBtnTxtConverter.cs" />
     <Compile Include="Converters\InvertBoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\LanguageToFlagConverter.cs" />
     <Compile Include="Converters\LanguageToStringConverter.cs" />
     <Compile Include="Converters\ThemeAndIdToImageConverter.cs" />
     <Compile Include="Converters\ThemeAndIdToNameConverter.cs" />
@@ -242,6 +243,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Farm_Animals\farm_animals_sheep.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CRO_Flag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\UK_Flag.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

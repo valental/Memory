@@ -25,7 +25,14 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-                        <TextBlock Text="{Binding ElementName=card, Path=Theme, Mode=OneWay, Converter={StaticResource ThemeToStringConverter}}" Grid.Row="1" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Row="1" Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" TextAlignment="Center">
+                            <TextBlock.Text>
+                                <MultiBinding Converter="{StaticResource ThemeToStringConverter}">
+                                    <Binding Path="Language"/>
+                                    <Binding ElementName="card" Path="Theme" Mode="OneWay"/>
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
                     </Grid>
 
                     <!-- Card Open -->

@@ -40,11 +40,10 @@ namespace MemoryWPF.DataHelpers
             ExpressionsEnglish[1] = "Theme:";
             ExpressionsEnglish[2] = "Number of pairs:";
             ExpressionsEnglish[3] = "Start!";
-            ExpressionsEnglish[4] = "Change language!";
-            ExpressionsEnglish[5] = "RANK";
-            ExpressionsEnglish[6] = "NAME";
-            ExpressionsEnglish[7] = "TIME (s)";
-            ExpressionsEnglish[8] = "PAIRS OPENED";
+            ExpressionsEnglish[4] = "RANK";
+            ExpressionsEnglish[5] = "NAME";
+            ExpressionsEnglish[6] = "TIME (s)";
+            ExpressionsEnglish[7] = "PAIRS OPENED";
             #endregion
 
             #region ExpressionsCroatian
@@ -52,11 +51,10 @@ namespace MemoryWPF.DataHelpers
             ExpressionsCroatian[1] = "Tema:";
             ExpressionsCroatian[2] = "Broj parova:";
             ExpressionsCroatian[3] = "Kreni!";
-            ExpressionsCroatian[4] = "Promijeni jezik!";
-            ExpressionsCroatian[5] = "RANG";
-            ExpressionsCroatian[6] = "IME";
-            ExpressionsCroatian[7] = "VRIJEME (s)";
-            ExpressionsCroatian[8] = "OTVORENI PAROVI";
+            ExpressionsCroatian[4] = "RANG";
+            ExpressionsCroatian[5] = "IME";
+            ExpressionsCroatian[6] = "VRIJEME (s)";
+            ExpressionsCroatian[7] = "OTVORENI PAROVI";
             #endregion
 
             #region Colors

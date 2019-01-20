@@ -15,5 +15,6 @@
         <converters:ZeroToDashConverter x:Key="ZeroToDashConverter"/>
         <converters:BoolToBtnTxtConverter x:Key="BoolToBtnTxtConverter"/>
         <converters:LanguageToStringConverter x:Key="LanguageToStringConverter"/>
+        <converters:LanguageToFlagConverter x:Key="LanguageToFlagConverter"/>
     </Application.Resources>
 </Application>
