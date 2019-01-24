@@ -43,7 +43,7 @@
                     case Theme.Cities:
                         return "Gradovi";
                     case Theme.Instruments:
-                        return "Insturmenti";
+                        return "Instrumenti";
                     case Theme.Singers:
                         return "Pjevači";
                     case Theme.Sports:
