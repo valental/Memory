@@ -18,7 +18,7 @@ namespace MemoryWPF.DataHelpers
                 while ((line = file.ReadLine()) != null)
                 {
                     string[] parts = line.Split(',');
-                    list.Add( new GameData (parts[0], TimeSpan.Parse(parts[1]), int.Parse(parts[2]), list.Count+1) );
+                    list.Add(new GameData(parts[0], TimeSpan.Parse(parts[1]), int.Parse(parts[2]), list.Count + 1));
                 }
                 file.Close();
             }
@@ -40,18 +40,21 @@ namespace MemoryWPF.DataHelpers
                 List<GameData> list = GetRankList(t, size);
                 int index = list.FindIndex(player => player.PlayerName == data.PlayerName);
 
-                if (index != -1 && list[index].Time > data.Time)
+                if (index != -1)
                 {
-                    list[index].Time = data.Time;
-                    list[index].NumberOfPairsOpened = data.NumberOfPairsOpened;
+                    if (list[index].Time > data.Time)
+                    {
+                        list[index].Time = data.Time;
+                        list[index].NumberOfPairsOpened = data.NumberOfPairsOpened;
+                    }
                 }
                 else
                 {
-                    if(list.Count < 10)
+                    if (list.Count < 10)
                     {
                         list.Add(new GameData(data.PlayerName, data.Time, data.NumberOfPairsOpened));
                     }
-                    else if(list[9].Time > data.Time)
+                    else if (list[9].Time > data.Time)
                     {
                         list.RemoveAt(9);
                         list.Add(new GameData(data.PlayerName, data.Time, data.NumberOfPairsOpened));
@@ -64,7 +67,7 @@ namespace MemoryWPF.DataHelpers
                 {
                     foreach (GameData player in list)
                         sw.WriteLine(player.PlayerName + "," + player.Time + "," + player.NumberOfPairsOpened);
-                }  
+                }
             }
         }
     }
