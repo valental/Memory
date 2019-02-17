@@ -18,5 +18,7 @@
         <converters:LanguageToFlagConverter x:Key="LanguageToFlagConverter"/>
         <converters:LanguageToMessageConverter x:Key="LanguageToMessageConverter"/>
         <converters:ThemeToVisibilityConverter x:Key="ThemeToVisibilityConverter"/>
+
+        <SolidColorBrush x:Key="CardMatchedFilter" Color="Black" Opacity="0.5"/>
     </Application.Resources>
 </Application>

@@ -13,6 +13,9 @@
             <Grid>
                 <Border Name="mask" CornerRadius="10"
                         Background="{Binding ElementName=card, Path=Theme, Mode=OneWay, Converter={StaticResource ThemeToColorConverter}}"/>
+                <Border CornerRadius="10" Panel.ZIndex="1000"
+                        Background="{StaticResource CardMatchedFilter}"
+                        Visibility="{Binding ElementName=card, Path=IsMatched, Mode=OneWay, Converter={StaticResource BoolToVis}}"/>
                 <Grid>
                     <Grid.OpacityMask>
                         <VisualBrush Visual="{Binding ElementName=mask}"/>
