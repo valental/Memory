@@ -65,11 +65,17 @@ namespace MemoryWPF.Controls
             AddRows(cardRows);
             AddCols(cardCols);
 
+            List<int> ids = new List<int>();
+            int max = UserSettings.Language == DataHelpers.Language.English ? CardData.ThemeCardNamesEnglish[Theme].Count : CardData.ThemeCardNamesCroatian[Theme].Count;
+            for (int i = 0; i < max; i++)
+                ids.Add(i);
+            ids.Shuffle();
+
             List<int> cardIDs = new List<int>();
             for (int i = 0; i < PairCount; i++)
             {
-                cardIDs.Add(i);
-                cardIDs.Add(i);
+                cardIDs.Add(ids[i]);
+                cardIDs.Add(ids[i]);
             }
             cardIDs.Shuffle();
 

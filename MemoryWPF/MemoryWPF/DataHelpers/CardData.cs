@@ -42,7 +42,7 @@ namespace MemoryWPF.DataHelpers
             ExpressionsEnglish[3] = "Start!";
             ExpressionsEnglish[4] = "RANK";
             ExpressionsEnglish[5] = "NAME";
-            ExpressionsEnglish[6] = "TIME (s)";
+            ExpressionsEnglish[6] = "TIME";
             ExpressionsEnglish[7] = "PAIRS OPENED";
             #endregion
 
@@ -53,7 +53,7 @@ namespace MemoryWPF.DataHelpers
             ExpressionsCroatian[3] = "Kreni!";
             ExpressionsCroatian[4] = "RANG";
             ExpressionsCroatian[5] = "IME";
-            ExpressionsCroatian[6] = "VRIJEME (s)";
+            ExpressionsCroatian[6] = "VRIJEME";
             ExpressionsCroatian[7] = "OTVORENI PAROVI";
             #endregion
 

@@ -12,6 +12,7 @@
         WindowStartupLocation="CenterScreen"
         SizeToContent="WidthAndHeight"
         SizeChanged="Window_SizeChanged"
+        ResizeMode="CanMinimize"
         Background="Bisque">
     <Window.DataContext>
         <vm:MainWindowViewModel/>
@@ -54,7 +55,7 @@
                 <ColumnDefinition Width="100"/> <!-- 1. Guest -->
                 <ColumnDefinition Width="10"/> <!-- 2. razmak -->
                 <ColumnDefinition Width="50"/> <!-- 3. Theme: -->
-                <ColumnDefinition Width="110"/> <!-- 4. Combo Theme -->
+                <ColumnDefinition Width="120"/> <!-- 4. Combo Theme -->
                 <ColumnDefinition Width="10"/> <!-- 5. razmak -->
                 <ColumnDefinition Width="100"/> <!-- 6. Number of pairs: -->
                 <ColumnDefinition Width="40"/> <!-- 7. Combo pairs -->
