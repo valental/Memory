@@ -77,7 +77,7 @@ namespace MemoryWPF.ViewModels
             get => rankList;
             set { rankList = value; OnPropertyChanged("RankList"); }
         }
-        
+
         public Language Language
         {
             get => UserSettings.Language;
@@ -159,10 +159,10 @@ namespace MemoryWPF.ViewModels
         {
             ShowScores = !ShowScores;
             RankList = new ObservableCollection<GameData>(ScoresManager.GetRankList(SelectedTheme.Theme, SelectedPairCount));
-            if(RankList.Count < 10)
+            if (RankList.Count < 10)
             {
-                for(int i = RankList.Count; i <= 10; i++)
-                    RankList.Add(new GameData("-",TimeSpan.Zero,0, i));   
+                for (int i = RankList.Count + 1; i <= 10; i++)
+                    RankList.Add(new GameData("-", TimeSpan.Zero, 0, i));
             }
         }
 
