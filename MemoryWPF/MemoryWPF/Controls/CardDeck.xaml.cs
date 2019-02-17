@@ -155,33 +155,41 @@ namespace MemoryWPF.Controls
         private void CardOpenedHandler(object sender, EventArgs e)
         {
             Card card = sender as Card;
-            
+            // The user clicked on the same card again
+            if (firstOpened == card)
+                return;
+
+            CurrentGameData.Game.NumberOfPairsOpened++;
+
             if (firstOpened != null && secondOpened == null)
             {
                 secondOpened = card;
-                if (firstOpened.ID == secondOpened.ID)
-                {
-                    if (firstOpened == secondOpened) return;
-                    firstOpened.IsMatched = true;
-                    secondOpened.IsMatched = true;
-                    firstOpened = null;
-                    secondOpened = null;
-                    pairsMatched++;
-                    if (pairsMatched == PairCount)
-                    {
-                        CurrentGameData.Game.NumberOfPairsOpened /= 2;
-                        CurrentGameData.Game.Time = DateTime.Now - CurrentGameData.StartTime;
-                        ScoresManager.UpdateRankList(Theme, PairCount, CurrentGameData.Game);
 
-                        GameFinishedMessage gameFinishedMessage = new GameFinishedMessage();
-                        gameFinishedMessage.Theme = Theme;
-                        Grid.SetRow(gameFinishedMessage, 0);
-                        Grid.SetRowSpan(gameFinishedMessage, 2 * cardRows + 3);
-                        Grid.SetColumn(gameFinishedMessage, 0);
-                        Grid.SetColumnSpan(gameFinishedMessage, 2 * cardCols + 3);
-                        Children.Add(gameFinishedMessage);
-                    }
-                }
+                // Cards don't match
+                if (firstOpened.ID != secondOpened.ID)
+                    return;
+
+                firstOpened.IsMatched = true;
+                secondOpened.IsMatched = true;
+                firstOpened = null;
+                secondOpened = null;
+                pairsMatched++;
+
+                // The game is not over yet
+                if (pairsMatched != PairCount)
+                    return;
+
+                CurrentGameData.Game.NumberOfPairsOpened /= 2;
+                CurrentGameData.Game.Time = DateTime.Now - CurrentGameData.StartTime;
+                ScoresManager.UpdateRankList(Theme, PairCount, CurrentGameData.Game);
+
+                GameFinishedMessage gameFinishedMessage = new GameFinishedMessage();
+                gameFinishedMessage.Theme = Theme;
+                Grid.SetRow(gameFinishedMessage, 0);
+                Grid.SetRowSpan(gameFinishedMessage, 2 * cardRows + 3);
+                Grid.SetColumn(gameFinishedMessage, 0);
+                Grid.SetColumnSpan(gameFinishedMessage, 2 * cardCols + 3);
+                Children.Add(gameFinishedMessage);
             }
             else
             {
@@ -190,8 +198,6 @@ namespace MemoryWPF.Controls
                 firstOpened = card;
                 secondOpened = null;
             }
-
-            CurrentGameData.Game.NumberOfPairsOpened++;
         }
 
         private static void OnPairCountChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
