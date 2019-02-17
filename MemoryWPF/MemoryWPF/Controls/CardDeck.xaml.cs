@@ -154,14 +154,14 @@ namespace MemoryWPF.Controls
         #region Event Handlers
         private void CardOpenedHandler(object sender, EventArgs e)
         {
-            CurrentGameData.Game.NumberOfPairsOpened++;
-
             Card card = sender as Card;
+            
             if (firstOpened != null && secondOpened == null)
             {
                 secondOpened = card;
                 if (firstOpened.ID == secondOpened.ID)
                 {
+                    if (firstOpened == secondOpened) return;
                     firstOpened.IsMatched = true;
                     secondOpened.IsMatched = true;
                     firstOpened = null;
@@ -190,6 +190,8 @@ namespace MemoryWPF.Controls
                 firstOpened = card;
                 secondOpened = null;
             }
+
+            CurrentGameData.Game.NumberOfPairsOpened++;
         }
 
         private static void OnPairCountChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)

@@ -170,7 +170,6 @@ namespace MemoryWPF.ViewModels
         {
             Language = Language == Language.English ? Language.Croatian : Language.English;
         }
-
         #endregion
     }
 }

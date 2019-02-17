@@ -81,7 +81,7 @@ namespace MemoryWPF.Controls
         #region Methods
         public void Flip()
         {
-            if (!IsMatched && !IsOpen)
+            if (!IsMatched)
             {
                 OnCardClick(this, new EventArgs());
                 IsOpen = true;
