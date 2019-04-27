@@ -44,6 +44,8 @@ namespace MemoryWPF.DataHelpers
             ExpressionsEnglish[5] = "NAME";
             ExpressionsEnglish[6] = "TIME";
             ExpressionsEnglish[7] = "PAIRS OPENED";
+            ExpressionsEnglish[8] = "Time:";
+            ExpressionsEnglish[9] = "Pairs opened:";
             #endregion
 
             #region ExpressionsCroatian
@@ -55,6 +57,8 @@ namespace MemoryWPF.DataHelpers
             ExpressionsCroatian[5] = "IME";
             ExpressionsCroatian[6] = "VRIJEME";
             ExpressionsCroatian[7] = "OTVORENI PAROVI";
+            ExpressionsCroatian[8] = "Vrijeme:";
+            ExpressionsCroatian[9] = "Otvoreno parova:";
             #endregion
 
             #region Colors

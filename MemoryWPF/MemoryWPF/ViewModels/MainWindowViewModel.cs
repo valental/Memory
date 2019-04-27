@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
-
+using System.Windows.Threading;
 using MemoryWPF.DataHelpers;
 
 namespace MemoryWPF.ViewModels
 {
     public class MainWindowViewModel : BaseViewModel
     {
+        private readonly DispatcherTimer dt = new DispatcherTimer();
+        private readonly Stopwatch sw = new Stopwatch();
+
         #region Public Properties
         private string playerName = "Guest";
         public string PlayerName
@@ -81,10 +85,28 @@ namespace MemoryWPF.ViewModels
         public Language Language
         {
             get => UserSettings.Language;
+            set { UserSettings.Language = value; OnPropertyChanged("Language"); }
+        }
+        
+        private string elapsedTime = "00:00:00";
+        public string ElapsedTime
+        {
+            get => elapsedTime;
+            set { elapsedTime = value; OnPropertyChanged("ElapsedTime"); }
+        }
+
+        private bool isGameInProgress = false;
+        public bool IsGameInProgress
+        {
+            get => isGameInProgress;
             set
             {
-                UserSettings.Language = value;
-                OnPropertyChanged("Language");
+                isGameInProgress = value;
+                if (isGameInProgress)
+                    StartStopwatch();
+                else
+                    StopStopwatch();
+                OnPropertyChanged("IsGameInProgress");
             }
         }
         #endregion
@@ -130,6 +152,9 @@ namespace MemoryWPF.ViewModels
             foreach (var theme in Enum.GetValues(typeof(Theme)).Cast<Theme>())
                 Themes.Add(new ThemeObject(theme));
             SelectedTheme = Themes.First();
+
+            dt.Tick += new EventHandler(TickDispatcherTimer);
+            dt.Interval = new TimeSpan(0, 0, 0, 0, 1);
         }
         #endregion
 
@@ -154,7 +179,7 @@ namespace MemoryWPF.ViewModels
             CurrentGameData.Game = new GameData(PlayerName, TimeSpan.Zero);
             CurrentGameData.StartTime = DateTime.Now;
         }
-
+        
         private void ShowHighscores()
         {
             ShowScores = !ShowScores;
@@ -170,6 +195,29 @@ namespace MemoryWPF.ViewModels
         {
             Language = Language == Language.English ? Language.Croatian : Language.English;
         }
+
+        #region Timing methods
+        void TickDispatcherTimer(object sender, EventArgs e)
+        {
+            if (sw.IsRunning)
+            {
+                TimeSpan ts = sw.Elapsed;
+                ElapsedTime = String.Format("{0:00}:{1:00}:{2:00}", ts.Minutes, ts.Seconds, ts.Milliseconds / 10);
+            }
+        }
+
+        private void StartStopwatch()
+        {
+            sw.Start();
+            dt.Start();
+        }
+
+        private void StopStopwatch()
+        {
+            if (sw.IsRunning)
+                sw.Stop();
+        }
+        #endregion
         #endregion
     }
 }

@@ -28,6 +28,14 @@ namespace MemoryWPF.Controls
         public static readonly DependencyProperty PairCountProperty = DependencyProperty.Register(
             "PairCount", typeof(int), typeof(CardDeck), new PropertyMetadata(0, OnPairCountChanged)
         );
+
+        public static readonly DependencyProperty IsGameInProgressProperty = DependencyProperty.Register(
+            "IsGameInProgress", typeof(bool), typeof(CardDeck), new PropertyMetadata(false)
+        );
+
+        public static readonly DependencyProperty NumberOfPairsOpenedProperty = DependencyProperty.Register(
+            "NumberOfPairsOpened", typeof(int), typeof(CardDeck), new PropertyMetadata(0)
+        );
         #endregion
 
         #region Public Properties
@@ -41,6 +49,18 @@ namespace MemoryWPF.Controls
         {
             get { return (int)GetValue(PairCountProperty); }
             set { SetValue(PairCountProperty, value); }
+        }
+
+        public bool IsGameInProgress
+        {
+            get { return (bool)GetValue(IsGameInProgressProperty); }
+            set { SetValue(IsGameInProgressProperty, value); }
+        }
+
+        public int NumberOfPairsOpened
+        {
+            get { return (int)GetValue(NumberOfPairsOpenedProperty); }
+            set { SetValue(NumberOfPairsOpenedProperty, value); }
         }
         #endregion
 
@@ -94,6 +114,8 @@ namespace MemoryWPF.Controls
                     Children.Add(card);
                 }
             }
+            if (PairCount > 0)
+                IsGameInProgress = true;
         }
 
         private void AddRows(int count)
@@ -160,6 +182,7 @@ namespace MemoryWPF.Controls
                 return;
 
             CurrentGameData.Game.NumberOfPairsOpened++;
+            NumberOfPairsOpened = CurrentGameData.Game.NumberOfPairsOpened / 2;
 
             if (firstOpened != null && secondOpened == null)
             {
@@ -179,7 +202,9 @@ namespace MemoryWPF.Controls
                 if (pairsMatched != PairCount)
                     return;
 
+                IsGameInProgress = false;
                 CurrentGameData.Game.NumberOfPairsOpened /= 2;
+                NumberOfPairsOpened = CurrentGameData.Game.NumberOfPairsOpened;
                 CurrentGameData.Game.Time = DateTime.Now - CurrentGameData.StartTime;
                 ScoresManager.UpdateRankList(Theme, PairCount, CurrentGameData.Game);
 

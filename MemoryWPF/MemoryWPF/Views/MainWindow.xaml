@@ -39,10 +39,13 @@
         <sys:Int32 x:Key="TableHeaderName">5</sys:Int32>
         <sys:Int32 x:Key="TableHeaderTime">6</sys:Int32>
         <sys:Int32 x:Key="TableHeaderPairsOpened">7</sys:Int32>
+        <sys:Int32 x:Key="TimePassedLabel">8</sys:Int32>
+        <sys:Int32 x:Key="PairsOpenedLabel">9</sys:Int32>
     </Window.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
@@ -51,21 +54,36 @@
 
         <Grid Grid.Row="0" Margin="10 10 10 0">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="45"/>  <!-- 0. Name: -->
-                <ColumnDefinition Width="100"/> <!-- 1. Guest -->
-                <ColumnDefinition Width="10"/> <!-- 2. razmak -->
-                <ColumnDefinition Width="50"/> <!-- 3. Theme: -->
-                <ColumnDefinition Width="120"/> <!-- 4. Combo Theme -->
-                <ColumnDefinition Width="10"/> <!-- 5. razmak -->
-                <ColumnDefinition Width="100"/> <!-- 6. Number of pairs: -->
-                <ColumnDefinition Width="40"/> <!-- 7. Combo pairs -->
-                <ColumnDefinition Width="15"/> <!-- 8. razmak -->
-                <ColumnDefinition Width="50"/> <!-- 9. Start button-->
-                <ColumnDefinition Width="15"/> <!-- 10. razmak -->
-                <ColumnDefinition Width="100"/> <!-- 11. Show scores button -->
-                <ColumnDefinition Width="15"/> <!-- 12. razmak -->
+                <ColumnDefinition Width="45"/>
+                <!-- 0. Name: -->
+                <ColumnDefinition Width="100"/>
+                <!-- 1. Guest -->
+                <ColumnDefinition Width="10"/>
+                <!-- 2. razmak -->
+                <ColumnDefinition Width="50"/>
+                <!-- 3. Theme: -->
+                <ColumnDefinition Width="120"/>
+                <!-- 4. Combo Theme -->
+                <ColumnDefinition Width="10"/>
+                <!-- 5. razmak -->
+                <ColumnDefinition Width="100"/>
+                <!-- 6. Number of pairs: -->
+                <ColumnDefinition Width="40"/>
+                <!-- 7. Combo pairs -->
+                <ColumnDefinition Width="15"/>
+                <!-- 8. razmak -->
+                <ColumnDefinition Width="50"/>
+                <!-- 9. Start button-->
+                <ColumnDefinition Width="15"/>
+                <!-- 10. razmak -->
+                <ColumnDefinition Width="100"/>
+                <!-- 11. Show scores button -->
+                <ColumnDefinition Width="15"/>
+                <!-- 12. razmak -->
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="40"/> <!-- 13. Change language button -->
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="40"/>
+                <!-- 13. Change language button -->
             </Grid.ColumnDefinitions>
             <Label Grid.Column="0" HorizontalAlignment="Right">
                 <Label.Content>
@@ -112,7 +130,8 @@
                     </MultiBinding>
                 </Button.Content>
             </Button>
-            <Button Grid.Column="14" Height="22" Command="{Binding LanguageCommand}">
+
+            <Button Grid.Column="15" Height="22" Command="{Binding LanguageCommand}">
                 <Button.Template>
                     <ControlTemplate>
                         <Image Stretch="Fill" Source="{Binding Language, Converter={StaticResource LanguageToFlagConverter}}"/>
@@ -121,12 +140,41 @@
             </Button>
         </Grid>
 
-        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="1" Grid.RowSpan="3">
-            <controls:CardDeck Theme="{Binding CurrentTheme, Mode=OneWay}" 
-                               PairCount="{Binding CurrentPairCount, Mode=OneWay}" />
+        <Grid Grid.Row="1" Visibility="{Binding IsGameInProgress, Converter={StaticResource BoolToVis}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" HorizontalAlignment="Right">
+                <Label.Content>
+                    <MultiBinding Converter="{StaticResource LanguageToStringConverter}">
+                        <Binding Path="Language"/>
+                        <Binding Source="{StaticResource TimePassedLabel}"/>
+                    </MultiBinding>
+                </Label.Content>
+            </Label>
+            <Label Grid.Column="1" Content="{Binding ElapsedTime, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Grid.Column="2" HorizontalAlignment="Right">
+                <Label.Content>
+                    <MultiBinding Converter="{StaticResource LanguageToStringConverter}">
+                        <Binding Path="Language"/>
+                        <Binding Source="{StaticResource PairsOpenedLabel}"/>
+                    </MultiBinding>
+                </Label.Content>
+            </Label>
+            <Label Grid.Column="3" Content="{Binding ElementName=Deck, Path=NumberOfPairsOpened, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>
+        </Grid>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Grid.Row="2" Grid.RowSpan="3">
+            <controls:CardDeck x:Name="Deck" Theme="{Binding CurrentTheme, Mode=OneWay}" 
+                               PairCount="{Binding CurrentPairCount, Mode=OneWay}"
+                               IsGameInProgress="{Binding IsGameInProgress, Mode=TwoWay}"/>
         </ScrollViewer>
 
-        <StackPanel Grid.Row="2">
+        <StackPanel Grid.Row="3">
             <Grid Panel.ZIndex="2" HorizontalAlignment="Center" Background="SeaGreen"
               Visibility="{Binding ShowScores, Mode=OneWay, Converter={StaticResource BoolToVis}}" >
                 <Grid.ColumnDefinitions>
